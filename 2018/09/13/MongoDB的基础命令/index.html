@@ -1,0 +1,508 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="数据库" />
+
+
+<link rel="canonical" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+
+
+
+  <title>
+MongoDB的基础命令 |
+路宇航的博客</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">MongoDB的基础命令
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2018-09-13 17:06:37">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2018-09-13T17:06:37+08:00">2018-09-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">路宇航的博客</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssoxbd0sj31hc0u0npd.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpss64y7ocj31hc0u0hdu.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssc2gebej31hc0u07wj.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/touxiang.jpg">
+    <meta itemprop="name" content="体奈">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="路宇航的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="1-什么是mongodb数据库"><a class="markdownIt-Anchor" href="#1-什么是mongodb数据库">#</a> 1. 什么是 MongoDB 数据库</h2>
+<p>MongoDB 是一个基于分布式文件存储的数据库。由 C++ 语言编写。旨在为 WEB 应用提供可扩展的高性能数据存储解决方案。<br>
+MongoDB 是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。<br>
+它支持的数据结构非常松散，是类似 json 的 bson 格式，因此可以存储比较复杂的数据类型。<br>
+Mongo 最大的特点是它支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，<br>
+几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。</p>
+<h2 id="2-mongodb基础命令"><a class="markdownIt-Anchor" href="#2-mongodb基础命令">#</a> 2. MongoDB 基础命令</h2>
+<h3 id="1-显示当前所有数据库"><a class="markdownIt-Anchor" href="#1-显示当前所有数据库">#</a> 1 显示当前所有数据库</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show dbs 或 show databases</span><br></pre></td></tr></table></figure>
+<h3 id="2-创建数据库"><a class="markdownIt-Anchor" href="#2-创建数据库">#</a> 2 创建数据库</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名</span><br></pre></td></tr></table></figure>
+<h3 id="3-查看当前所处数据库"><a class="markdownIt-Anchor" href="#3-查看当前所处数据库">#</a> 3 查看当前所处数据库</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db</span><br></pre></td></tr></table></figure>
+<h3 id="4-显示数据库中所有集合"><a class="markdownIt-Anchor" href="#4-显示数据库中所有集合">#</a> 4 显示数据库中所有集合</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show collections</span><br></pre></td></tr></table></figure>
+<h3 id="5-插入数据"><a class="markdownIt-Anchor" href="#5-插入数据">#</a> 5. 插入数据</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.collection.insert(&#123;‘name’:’123’&#125;)</span><br><span class="line">db.表名.insert(&#123;‘name’:’123’&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="6-查看所有数据"><a class="markdownIt-Anchor" href="#6-查看所有数据">#</a> 6. 查看所有数据</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">db.表名.find()</span><br><span class="line">db.表名.find().preety() # 树状型展示</span><br></pre></td></tr></table></figure>
+<h3 id="7-读取指定数据"><a class="markdownIt-Anchor" href="#7-读取指定数据">#</a> 7. 读取指定数据</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.表名.find_one(&#123;条件&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="8-查看数据库名"><a class="markdownIt-Anchor" href="#8-查看数据库名">#</a> 8、查看数据库名</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.getName()</span><br></pre></td></tr></table></figure>
+<h3 id="9-删除集合"><a class="markdownIt-Anchor" href="#9-删除集合">#</a> 9. 删除集合</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合.drop()</span><br></pre></td></tr></table></figure>
+<h3 id="10删除指定数据"><a class="markdownIt-Anchor" href="#10删除指定数据">#</a> 10. 删除指定数据</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.集合.update(&#123;&#39;name&#39;:&#39;张三&#39;&#125;,&#123;$unset:&#123;&#39;name&#39;:&#39;张三&#39;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="3-python连接mongodb数据库"><a class="markdownIt-Anchor" href="#3-python连接mongodb数据库">#</a> 3. python 连接 MongoDB 数据库</h2>
+<h3 id="1-下载mongodb包"><a class="markdownIt-Anchor" href="#1-下载mongodb包">#</a> 1. 下载 mongodb 包</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pymongo</span><br></pre></td></tr></table></figure>
+<h3 id="2-导包"><a class="markdownIt-Anchor" href="#2-导包">#</a> 2. 导包</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from pymongo import MongoClient</span><br><span class="line">client &#x3D; MongoClient(host&#x3D;&#39;127.0.0.1&#39;, port&#x3D;27017)  # 连接本地mongodb</span><br></pre></td></tr></table></figure>
+<h3 id="3-进入指定数据库"><a class="markdownIt-Anchor" href="#3-进入指定数据库">#</a> 3. 进入指定数据库</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db &#x3D; client.数据库名  # 进入到数据库(没有则自动创建)</span><br></pre></td></tr></table></figure>
+<h3 id="4-进入指定集合"><a class="markdownIt-Anchor" href="#4-进入指定集合">#</a> 4. 进入指定集合</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_set &#x3D; db集合名  # 进入集合(没有则自动创建)</span><br></pre></td></tr></table></figure>
+<h3 id="5-使用命令即可"><a class="markdownIt-Anchor" href="#5-使用命令即可">#</a> 5. 使用命令即可</h3>
+
+      <div class="tags">
+          <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="ic i-tag"></i> 数据库</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-04-22 16:17:42" itemprop="dateModified" datetime="2021-04-22T16:17:42+08:00">2021-04-22</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163142.png" alt="体奈 微信">
+        <p>微信</p>
+      </div>
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163121.png" alt="体奈 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>体奈 <i class="ic i-at"><em>@</em></i>路宇航的博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="MongoDB的基础命令">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/09/13/MongoDB的基础命令/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2018/07/13/python%E4%B8%ADwith%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;008i2EfTly8gpss3oedqfj31hc0u07wj.jpg" title="python中with上下文管理">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python中with上下文管理</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicis3attqj20zk0m8k7l.jpg" title="python基础2（数据类型）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python基础2（数据类型）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFmongodb%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text"> 1. 什么是 MongoDB 数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-mongodb%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text"> 2. MongoDB 基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.1.</span> <span class="toc-text"> 1 显示当前所有数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.2.</span> <span class="toc-text"> 2 创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E6%89%80%E5%A4%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.3.</span> <span class="toc-text"> 3 查看当前所处数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%98%BE%E7%A4%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E6%89%80%E6%9C%89%E9%9B%86%E5%90%88"><span class="toc-number">2.4.</span> <span class="toc-text"> 4 显示数据库中所有集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%8F%92%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">2.5.</span> <span class="toc-text"> 5. 插入数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">2.6.</span> <span class="toc-text"> 6. 查看所有数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%AF%BB%E5%8F%96%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE"><span class="toc-number">2.7.</span> <span class="toc-text"> 7. 读取指定数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D"><span class="toc-number">2.8.</span> <span class="toc-text"> 8、查看数据库名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%88%A0%E9%99%A4%E9%9B%86%E5%90%88"><span class="toc-number">2.9.</span> <span class="toc-text"> 9. 删除集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE"><span class="toc-number">2.10.</span> <span class="toc-text"> 10. 删除指定数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-python%E8%BF%9E%E6%8E%A5mongodb%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text"> 3. python 连接 MongoDB 数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BDmongodb%E5%8C%85"><span class="toc-number">3.1.</span> <span class="toc-text"> 1. 下载 mongodb 包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%BC%E5%8C%85"><span class="toc-number">3.2.</span> <span class="toc-text"> 2. 导包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%9B%E5%85%A5%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.3.</span> <span class="toc-text"> 3. 进入指定数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%9B%E5%85%A5%E6%8C%87%E5%AE%9A%E9%9B%86%E5%90%88"><span class="toc-number">3.4.</span> <span class="toc-text"> 4. 进入指定集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8D%B3%E5%8F%AF"><span class="toc-number">3.5.</span> <span class="toc-text"> 5. 使用命令即可</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="体奈"
+      data-src="/images/touxiang.jpg">
+  <p class="name" itemprop="name">体奈</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <a href="https://github.com/tinaidejishuboke" title="https:&#x2F;&#x2F;github.com&#x2F;tinaidejishuboke" class="item github"><i class="ic i-github"></i></a>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS90aW5haTU0NTY5Mjcy" title="https:&#x2F;&#x2F;twitter.com&#x2F;tinai54569272"><i class="ic i-twitter"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6L211c2ljLjE2My5jb20vIy91c2VyL2hvbWU/aWQ9MzQyMTE5NjE5" title="https:&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;342119619"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item youtube" data-url="aHR0cHM6Ly95b3V0dWJlLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;youtube.com&#x2F;yourname"><i class="ic i-youtube"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2018/07/13/python%E4%B8%ADwith%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" title="vue拦截器的概念">vue拦截器的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/11/13/celery%E5%BC%82%E6%AD%A5/" title="celery异步">celery异步</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/31/Tree%E7%9A%84%E6%A6%82%E5%BF%B5/" title="Tree的概念">Tree的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/07/13/python%E4%B8%ADwith%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86/" title="python中with上下文管理">python中with上下文管理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="MongoDB的基础命令">MongoDB的基础命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/04/13/gitee%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="gitee的基础命令">gitee的基础命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/18/gitee%E5%92%8Cgethub%E7%9A%84%E5%8C%BA%E5%88%AB/" title="gitee和gethub的区别">gitee和gethub的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/04/15/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中websocket和http的区别">vue中websocket和http的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/05/26/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E3%80%90snowflake%E3%80%91/" title="雪花算法【snowflake】">雪花算法【snowflake】</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">体奈 @ 路宇航的博客</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<a href="https://github.com/amehime/hexo-theme-shoka">Shoka</a>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2018/09/13/MongoDB的基础命令/',
+    favicon: {
+      show: "（●´3｀●）加油奥利给！！",
+      hide: "(´Д｀)系统崩溃了！！"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

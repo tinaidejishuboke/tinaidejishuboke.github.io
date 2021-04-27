@@ -1,0 +1,588 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Vue" />
+
+
+<link rel="canonical" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+
+
+  <title>
+vue中websocket和http的区别 |
+路宇航的博客</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">vue中websocket和http的区别
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2020-04-13 15:20:24">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2020-04-13T15:20:24+08:00">2020-04-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">路宇航的博客</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpss369dtdj31hc0u0b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpss8t5wjrj31hc0u07wj.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssf2s57gj31hc0u0hdu.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpsspjcq17j31hc0u0b2a.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/touxiang.jpg">
+    <meta itemprop="name" content="体奈">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="路宇航的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="什么是websocket"><a class="markdownIt-Anchor" href="#什么是websocket">#</a> 什么是 Websocket</h2>
+<ul>
+<li>Websocket 是一种网络通信协议，是 HTML5 开始提供的一种在单个 TCP 连接上进行全双工通讯的协议</li>
+</ul>
+<h2 id="websocket有什么特点"><a class="markdownIt-Anchor" href="#websocket有什么特点">#</a> Websocket 有什么特点</h2>
+<ul>
+<li>建立在 TCP 协议之上</li>
+<li>性能开销小通信高效</li>
+<li>协议标识符 ws wss（加密之后）</li>
+<li>持久化网络通信协议</li>
+<li>客户端可以与任意服务器通信</li>
+</ul>
+<h2 id="websocket是什么样的协议具体有什么优点"><a class="markdownIt-Anchor" href="#websocket是什么样的协议具体有什么优点">#</a> Websocket 是什么样的协议，具体有什么优点</h2>
+<blockquote>
+<p>首先，Websocket 是一个持久化的协议，相对于 HTTP 这种非持久的协议来说<br>
+ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Response ，那么在 HTTP1.0 中，这次 HTTP 请求就结束了。<br>
+在 HTTP1.1 中进行了改进，使得有一个 keep-alive，也就是说，在一个 HTTP 连接中，可以发送多个 Request，接收多个 Response。但是请记住 Request = Response ， 在 HTTP 中永远是这样，也就是说一个 request 只能有一个 response。而且这个 response 也是被动的，不能主动发起。</p>
+</blockquote>
+<h2 id="websocket的作用"><a class="markdownIt-Anchor" href="#websocket的作用">#</a> Websocket 的作用</h2>
+<h3 id="1ajax轮询"><a class="markdownIt-Anchor" href="#1ajax轮询">#</a> 1）ajax 轮询</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ajax轮询的原理非常简单，让浏览器隔个几秒就发送一次请求，询问服务器是否有新信息</span><br></pre></td></tr></table></figure>
+<h3 id="2long-poll长轮询"><a class="markdownIt-Anchor" href="#2long-poll长轮询">#</a> 2）long poll 长轮询</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">long poll 其实原理跟 ajax轮询 差不多，都是采用轮询的方式，不过采取的是阻塞模型（一直打电话，没收到就不挂电话），也就是说，客户端发起连接后，如果没消息，就一直不返回Response给客户端（对于PHP有最大执行时间，建议没消息，执行到一定时间也返回）。直到有消息才返回，返回完之后，客户端再次建立连接，周而复始。</span><br><span class="line">从上面可以看出其实这两种方式，都是在不断地建立HTTP连接，关闭HTTP协议，由于HTTP是非状态性的，每次都要重新传输 identity info （鉴别信息），来告诉服务端你是谁。然后等待服务端处理，可以体现HTTP协议的另外一个特点，被动性。</span><br><span class="line">何为被动性呢，其实就是，服务端不能主动联系客户端，只能有客户端发起。从上面很容易看出来，不管怎么样，上面这两种都是非常消耗资源的。</span><br><span class="line">ajax轮询 需要服务器有很快的处理速度和资源。（速度）long poll 需要有很高的并发，也就是说同时接待客户的能力。（场地大小）</span><br></pre></td></tr></table></figure>
+<h3 id="3websocket"><a class="markdownIt-Anchor" href="#3websocket">#</a> 3）WebSocket</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Websocket解决了HTTP的这几个难题。首先，被动性，当服务器完成协议升级后（HTTP-&gt;Websocket），服务端就可以主动推送信息给客户端啦。解决了上面同步有延迟的问题。</span><br><span class="line">解决服务器上消耗资源的问题：其实我们所用的程序是要经过两层代理的，即HTTP协议在Nginx等服务器的解析下，然后再传送给相应的Handler（php等）来处理。简单地说，我们有一个非常快速的 接线员（Nginx） ，他负责把问题转交给相应的 客服（Handler） 。Websocket就解决了这样一个难题，建立后，可以直接跟接线员建立持久连接，有信息的时候客服想办法通知接线员，然后接线员在统一转交给客户。</span><br><span class="line">由于Websocket只需要一次HTTP握手，所以说整个通讯过程是建立在一次连接&#x2F;状态中，也就避免了HTTP的非状态性，服务端会一直知道你的信息，直到你关闭请求，这样就解决了接线员要反复解析HTTP协议，还要查看identity info的信息。</span><br><span class="line">目前唯一的问题是：不兼容低版本的IE</span><br></pre></td></tr></table></figure>
+<h2 id="websocket使用场景"><a class="markdownIt-Anchor" href="#websocket使用场景">#</a> Websocket 使用场景</h2>
+<blockquote>
+<p>社交聊天、弹幕、多玩家游戏、视频会议 / 聊天、在线教育、智能家居等需要高实时的场景</p>
+</blockquote>
+<h2 id="websocket-四个事件两个方法"><a class="markdownIt-Anchor" href="#websocket-四个事件两个方法">#</a> Websocket 四个事件，两个方法</h2>
+<ul>
+<li>
+<h3 id="4个事件"><a class="markdownIt-Anchor" href="#4个事件">#</a> 4 个事件</h3>
+<ul>
+<li>open Socket.onopen 连接建立时触发</li>
+<li>message Socket.onmessage 客户端接收服务端数据时触发</li>
+<li>error Socket.onerror 通信发生错误时触发</li>
+<li>close Socket.onclose 连接关闭时触发</li>
+</ul>
+</li>
+<li>
+<h3 id="2个方法"><a class="markdownIt-Anchor" href="#2个方法">#</a> 2 个方法</h3>
+<ul>
+<li>Socket.send () 使用连接发送数据</li>
+<li>Socket.close () 关闭连接</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="什么是http协议"><a class="markdownIt-Anchor" href="#什么是http协议">#</a> 什么是 HTTP 协议</h2>
+<ul>
+<li>超文本传输协议，本质上是一种通信协议。用来将 html 从服务端传送到客户端</li>
+</ul>
+<h2 id="特点"><a class="markdownIt-Anchor" href="#特点">#</a> 特点</h2>
+<ul>
+<li>
+<p>简单快速</p>
+<blockquote>
+<p>客户向服务器请求服务时，只需传送请求方法和路径</p>
+</blockquote>
+</li>
+<li>
+<p>无连接</p>
+<blockquote>
+<p>限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间</p>
+</blockquote>
+</li>
+<li>
+<p>无状态</p>
+<blockquote>
+<p>协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="websocket与http的关系"><a class="markdownIt-Anchor" href="#websocket与http的关系">#</a> Websocket 与 http 的关系</h2>
+<ul>
+<li>
+<h3 id="相同点"><a class="markdownIt-Anchor" href="#相同点">#</a> 相同点</h3>
+<ol>
+<li>都是一样基于 TCP 的，都是可靠性传输协议。</li>
+<li>都是应用层协议。</li>
+</ol>
+</li>
+<li>
+<h3 id="不同点"><a class="markdownIt-Anchor" href="#不同点">#</a> 不同点</h3>
+<ol>
+<li>WebSocket 是双向通信协议，模拟 Socket 协议，可以双向发送或接受信息。HTTP 是单向的。</li>
+<li>WebSocket 是需要浏览器和服务器握手进行建立连接的。而 http 是浏览器发起向服务器的连接，服务器预先并不知道这个连接。</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2 id="websocket实例"><a class="markdownIt-Anchor" href="#websocket实例">#</a> Websocket 实例</h2>
+<ul>
+<li>
+<h3 id="安装"><a class="markdownIt-Anchor" href="#安装">#</a> 安装</h3>
+<ul>
+<li>pip install -i <span class="exturl" data-url="aHR0cHM6Ly9weXBpLnR1bmEudHNpbmdodWEuZWR1LmNuL3NpbXBsZQ==">https://pypi.tuna.tsinghua.edu.cn/simple</span> dwebsocket</li>
+</ul>
+</li>
+<li>
+<h3 id="定义视图文件的逻辑viewspy"><a class="markdownIt-Anchor" href="#定义视图文件的逻辑viewspy">#</a> <span class="exturl" data-url="aHR0cDovL3huLS12aWV3cy14czFobDRiNnoxYm55amM0eTR3NmJna3ljN3pwOGZjLnB5">定义视图文件的逻辑 views.py</span></h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">PYTHON</span><br><span class="line">#导入websocket装饰器</span><br><span class="line">from dwebsocket.decorators import accept_websocket</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#接收前端信息</span><br><span class="line">@accept_websocket</span><br><span class="line">def test_socket(request):</span><br><span class="line">    if request.is_websocket():</span><br><span class="line">        for message in request.websocket:</span><br><span class="line">            c&#x3D;str(message,encoding&#x3D;&#39;utf-8&#39;)</span><br><span class="line">            print(c)</span><br><span class="line">            request.websocket.send(message)</span><br><span class="line"></span><br><span class="line">#主动推送消息</span><br><span class="line">@accept_websocket</span><br><span class="line">def test_websocket(request):</span><br><span class="line">    if request.is_websocket():</span><br><span class="line">        while 1:</span><br><span class="line">            time.sleep(1) ## 向前端发送时间</span><br><span class="line">            dit &#x3D; &#123;</span><br><span class="line">                &#39;time&#39;:time.strftime(&#39;%Y.%m.%d %H:%M:%S&#39;,time.localtime(time.time()))</span><br><span class="line">            &#125;</span><br><span class="line">            request.websocket.send(json.dumps(dit))</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h3 id="路由配置"><a class="markdownIt-Anchor" href="#路由配置">#</a> 路由配置</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PYTHON</span><br><span class="line">#websocket</span><br><span class="line">path(&#39;test_socket&#39;,test_socket),</span><br><span class="line">path(&#39;test_websocket&#39;,test_websocket),</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h3 id="定义前端发送消息的页面-socketvue"><a class="markdownIt-Anchor" href="#定义前端发送消息的页面-socketvue">#</a> 定义前端发送消息的页面 – socket.vue</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">CODE</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;input id&#x3D;&quot;chat-message-input&quot; type&#x3D;&quot;text&quot; size&#x3D;&quot;100&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">    &lt;input id&#x3D;&quot;chat-message-submit&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;Send&quot; @click&#x3D;&#39;sendmessage()&#39;&#x2F;&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;socket&quot;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    sendmessage() &#123;</span><br><span class="line"></span><br><span class="line">      window.s.send(document.getElementById(&quot;chat-message-input&quot;).value);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    &#x2F;&#x2F;生成socket对象</span><br><span class="line">    var socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;127.0.0.1:8000&#x2F;z&#x2F;test_socket&#x2F;&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    socket.onopen &#x3D; function () &#123;</span><br><span class="line">      console.log(&#39;WebSocket open&#39;);&#x2F;&#x2F;成功连接上Websocket</span><br><span class="line">    &#125;;</span><br><span class="line">    socket.onmessage &#x3D; function (e) &#123;</span><br><span class="line">      console.log(&#39;message: &#39; + e.data);&#x2F;&#x2F;打印服务端返回的数据</span><br><span class="line">    &#125;;</span><br><span class="line">    socket.onclose &#x3D; function (e) &#123;</span><br><span class="line">      console.log(e);</span><br><span class="line">      socket.close(); &#x2F;&#x2F;关闭TCP连接</span><br><span class="line">    &#125;;</span><br><span class="line">    if (socket.readyState &#x3D;&#x3D; WebSocket.OPEN) &#123;</span><br><span class="line">      socket.onopen();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    window.s &#x3D; socket;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<h3 id="然后再定义一个页面测试后台的主动推送-socket_pushvue"><a class="markdownIt-Anchor" href="#然后再定义一个页面测试后台的主动推送-socket_pushvue">#</a> 然后再定义一个页面，测试后台的主动推送 – socket_push.vue</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">PYTHON</span><br><span class="line">&lt;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;socket_push&quot;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    &#x2F;&#x2F;生成socket对象</span><br><span class="line">    var socket &#x3D; new WebSocket(&quot;ws:&#x2F;&#x2F;127.0.0.1:8000&#x2F;z&#x2F;test_websocket&#x2F;&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    socket.onopen &#x3D; function () &#123;</span><br><span class="line">      console.log(&#39;WebSocket open&#39;);&#x2F;&#x2F;成功连接上Websocket</span><br><span class="line">    &#125;;</span><br><span class="line">    socket.onmessage &#x3D; function (e) &#123;</span><br><span class="line">      console.log(&#39;message: &#39; + e.data);&#x2F;&#x2F;打印服务端返回的数据</span><br><span class="line">    &#125;;</span><br><span class="line">    socket.onclose &#x3D; function (e) &#123;</span><br><span class="line">      console.log(e);</span><br><span class="line">      socket.close(); &#x2F;&#x2F;关闭TCP连接</span><br><span class="line">    &#125;;</span><br><span class="line">    if (socket.readyState &#x3D;&#x3D; WebSocket.OPEN) &#123;</span><br><span class="line">      socket.onopen();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/Vue/" rel="tag"><i class="ic i-tag"></i> Vue</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-04-22 16:18:50" itemprop="dateModified" datetime="2021-04-22T16:18:50+08:00">2021-04-22</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163142.png" alt="体奈 微信">
+        <p>微信</p>
+      </div>
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163121.png" alt="体奈 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>体奈 <i class="ic i-at"><em>@</em></i>路宇航的博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中websocket和http的区别">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2020/04/13/vue中websocket和http的区别/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giciryrr3rj20zk0m8nhk.jpg" title="vue钩子函数">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>vue钩子函数</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2020/05/26/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E3%80%90snowflake%E3%80%91/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitht3xtj20zk0m8k5v.jpg" title="雪花算法【snowflake】">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>雪花算法【snowflake】</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFwebsocket"><span class="toc-number">1.</span> <span class="toc-text"> 什么是 Websocket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text"> Websocket 有什么特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E6%98%AF%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%8D%8F%E8%AE%AE%E5%85%B7%E4%BD%93%E6%9C%89%E4%BB%80%E4%B9%88%E4%BC%98%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text"> Websocket 是什么样的协议，具体有什么优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text"> Websocket 的作用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1ajax%E8%BD%AE%E8%AF%A2"><span class="toc-number">4.1.</span> <span class="toc-text"> 1）ajax 轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2long-poll%E9%95%BF%E8%BD%AE%E8%AF%A2"><span class="toc-number">4.2.</span> <span class="toc-text"> 2）long poll 长轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3websocket"><span class="toc-number">4.3.</span> <span class="toc-text"> 3）WebSocket</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">5.</span> <span class="toc-text"> Websocket 使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket-%E5%9B%9B%E4%B8%AA%E4%BA%8B%E4%BB%B6%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text"> Websocket 四个事件，两个方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E4%B8%AA%E4%BA%8B%E4%BB%B6"><span class="toc-number">6.1.</span> <span class="toc-text"> 4 个事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text"> 2 个方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFhttp%E5%8D%8F%E8%AE%AE"><span class="toc-number">7.</span> <span class="toc-text"> 什么是 HTTP 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">8.</span> <span class="toc-text"> 特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E4%B8%8Ehttp%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">9.</span> <span class="toc-text"> Websocket 与 http 的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%90%8C%E7%82%B9"><span class="toc-number">9.1.</span> <span class="toc-text"> 相同点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%82%B9"><span class="toc-number">9.2.</span> <span class="toc-text"> 不同点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#websocket%E5%AE%9E%E4%BE%8B"><span class="toc-number">10.</span> <span class="toc-text"> Websocket 实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">10.1.</span> <span class="toc-text"> 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E8%A7%86%E5%9B%BE%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91viewspy"><span class="toc-number">10.2.</span> <span class="toc-text"> 定义视图文件的逻辑 views.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE"><span class="toc-number">10.3.</span> <span class="toc-text"> 路由配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%89%8D%E7%AB%AF%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF%E7%9A%84%E9%A1%B5%E9%9D%A2-socketvue"><span class="toc-number">10.4.</span> <span class="toc-text"> 定义前端发送消息的页面 – socket.vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%84%B6%E5%90%8E%E5%86%8D%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E6%B5%8B%E8%AF%95%E5%90%8E%E5%8F%B0%E7%9A%84%E4%B8%BB%E5%8A%A8%E6%8E%A8%E9%80%81-socket_pushvue"><span class="toc-number">10.5.</span> <span class="toc-text"> 然后再定义一个页面，测试后台的主动推送 – socket_push.vue</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="体奈"
+      data-src="/images/touxiang.jpg">
+  <p class="name" itemprop="name">体奈</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <a href="https://github.com/tinaidejishuboke" title="https:&#x2F;&#x2F;github.com&#x2F;tinaidejishuboke" class="item github"><i class="ic i-github"></i></a>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS90aW5haTU0NTY5Mjcy" title="https:&#x2F;&#x2F;twitter.com&#x2F;tinai54569272"><i class="ic i-twitter"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6L211c2ljLjE2My5jb20vIy91c2VyL2hvbWU/aWQ9MzQyMTE5NjE5" title="https:&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;342119619"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item youtube" data-url="aHR0cHM6Ly95b3V0dWJlLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;youtube.com&#x2F;yourname"><i class="ic i-youtube"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2020/05/26/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E3%80%90snowflake%E3%80%91/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/" title="python基础2（数据类型）">python基础2（数据类型）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" title="python的pymongo封装类">python的pymongo封装类</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" title="vue钩子函数">vue钩子函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/" title="Ant基础按钮">Ant基础按钮</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/05/26/python%E5%9F%BA%E7%A1%801%EF%BC%88%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%89/" title="python基础1（内存管理）">python基础1（内存管理）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/04/13/gitee%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="gitee的基础命令">gitee的基础命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/04/15/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/05/26/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E3%80%90snowflake%E3%80%91/" title="雪花算法【snowflake】">雪花算法【snowflake】</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/26/gitee%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%AB%E7%9A%84%E5%91%BD%E4%BB%A4/" title="gitee企业级别的命令">gitee企业级别的命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/18/gitee%E5%92%8Cgethub%E7%9A%84%E5%8C%BA%E5%88%AB/" title="gitee和gethub的区别">gitee和gethub的区别</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">体奈 @ 路宇航的博客</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<a href="https://github.com/amehime/hexo-theme-shoka">Shoka</a>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2020/04/13/vue中websocket和http的区别/',
+    favicon: {
+      show: "（●´3｀●）加油奥利给！！",
+      hide: "(´Д｀)系统崩溃了！！"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,583 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="python" />
+
+
+<link rel="canonical" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/22/%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91/">
+
+
+
+  <title>
+日活人数和高并发 |
+路宇航的博客</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">日活人数和高并发
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-04-22 20:45:14">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-04-22T20:45:14+08:00">2021-04-22</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">路宇航的博客</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpss8t5wjrj31hc0u07wj.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitspjpbj20zk0m81ky.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/22/%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/touxiang.jpg">
+    <meta itemprop="name" content="体奈">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="路宇航的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="日活人数和高并发"><a class="markdownIt-Anchor" href="#日活人数和高并发">#</a> 日活人数和高并发</h1>
+<h1 id="redis主从复制与优化"><a class="markdownIt-Anchor" href="#redis主从复制与优化">#</a> Redis 主从复制与优化</h1>
+<h2 id="主从复制"><a class="markdownIt-Anchor" href="#主从复制">#</a> 主从复制</h2>
+<p>我们关注主从复制之前，首先要考虑单机有什么问题？</p>
+<ul>
+<li>机器故障</li>
+<li>容量瓶颈</li>
+<li>QPS 瓶颈</li>
+</ul>
+<p>这些都是单节点所遇到的问题，所以这个时候出现了主从复制（一主一从，一主多从）</p>
+<p><img data-src="https://img-blog.csdnimg.cn/2020101321485247.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>使用主从复制可以：</p>
+<ul>
+<li>数据副本</li>
+<li>扩展读性能</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>一个 master 可以有多个 slave</li>
+<li>一个 slave 只有一个 master</li>
+<li>数据流向是单向的，master 到 slave</li>
+</ul>
+<hr>
+<h2 id="主从复制的配置"><a class="markdownIt-Anchor" href="#主从复制的配置">#</a> 主从复制的配置</h2>
+<p><strong>两种实现方式</strong></p>
+<ul>
+<li>slaveof 命令</li>
+</ul>
+<p>两台机器：主节点：47.11.11.11 从节点 47.22.22.22</p>
+<p>在从节点执行 slaveof 命令</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">47.22</span><span class="number">.22</span><span class="number">.22</span>-<span class="number">6379</span> &gt; slacefof <span class="number">47.11</span><span class="number">.11</span><span class="number">.11</span> <span class="number">6379</span></span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>取消复制：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">47.22</span><span class="number">.22</span><span class="number">.22</span>-<span class="number">6379</span> &gt; slacefof no one</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改配置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">slaveof ip  port    <span class="comment">//从节点ip + 端口</span></span><br><span class="line">slave-read-only yes <span class="comment">//开启只做读的操作</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>两种方式比较</li>
+</ul>
+<p><img data-src="https://img-blog.csdnimg.cn/20201013220336165.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<ul>
+<li>查看主从</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; info replication</span><br><span class="line"># Replication</span><br><span class="line">role:master   <span class="comment">//主节点 </span></span><br><span class="line">connected_slaves:<span class="number">0</span></span><br><span class="line">master_replid:1d43401335a5343b27b1638fc9843e3a593fc1a7</span><br><span class="line">master_replid2:<span class="number">0000000000000000000000000000000000000000</span></span><br><span class="line">master_repl_offset:<span class="number">0</span></span><br><span class="line">second_repl_offset:-<span class="number">1</span></span><br><span class="line">repl_backlog_active:<span class="number">0</span></span><br><span class="line">repl_backlog_size:<span class="number">1048576</span></span><br><span class="line">repl_backlog_first_byte_offset:<span class="number">0</span></span><br><span class="line">repl_backlog_histlen:<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p>知识点 ：</p>
+<ul>
+<li>主节点 runID：</li>
+</ul>
+<p>每个 redis 节点启动后都会动态分配一个 40 位的十六进制字符串为运行 ID。运行 ID 的主要作用是来唯一识别 redis 节点，比如从节点保存主节点的运行 ID 识别自已正在复制是哪个主节点。如果只使用 ip+port 的方式识别主节点，那么主节点重启变更了整体数据集（如替换 RDB/AOF 文件），从节点再基于偏移量复制数据将是不安全的，因此当运行 ID 变化后从节点将做全量复制。可以在 info server 命令查看当前节点的运行 ID。</p>
+<p>需要注意的是 redis 关闭再启动，运行的 id 会随之变化。</p>
+<hr>
+<h2 id="全量复制和部分复制等"><a class="markdownIt-Anchor" href="#全量复制和部分复制等">#</a> 全量复制和部分复制等</h2>
+<h3 id="全量复制"><a class="markdownIt-Anchor" href="#全量复制">#</a> 全量复制</h3>
+<p>用于初次复制或其它无法进行部分复制的情况，将主节点中的所有数据都发送给从节点。当数据量过大的时候，会造成很大的网络开销。</p>
+<p>redis2.8+ 全量复制流程</p>
+<p><img data-src="https://img-blog.csdnimg.cn/2020101322385755.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>开销：</p>
+<ol>
+<li>bgsave 时间</li>
+<li>RDB 文件网络传输</li>
+<li>从节点清空数据时间</li>
+<li>从节点加载 RDB 时间</li>
+<li>可能的 AOF 重写时间</li>
+</ol>
+<h3 id="部分复制"><a class="markdownIt-Anchor" href="#部分复制">#</a> 部分复制</h3>
+<p>用于处理在主从复制中因网络闪退等原因造成数据丢失场景，当从节点再次连上主节点，如果条件允许，主节点会补发丢失数据给从节点，因为补发的数据远远小于全量数据，可以有效避免全量复制的过高开销。但需要注意，如果网络中断时间过长，造成主节点没有能够完整地保存中断期间执行的写命令，则无法进行部分复制，仍使用全量复制 。</p>
+<p>流程： <img data-src="https://img-blog.csdnimg.cn/20201013224506931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="复制偏移量"><a class="markdownIt-Anchor" href="#复制偏移量">#</a> 复制偏移量：</h3>
+<ul>
+<li>参与复制的主从节点都会维护自身复制偏移量，主节点在处理完写入命令操作后，会把命令的字节长度做累加记录，统计信息在 info replication 中的 master_repl_offset 指标中。</li>
+<li>从节点每秒钟上报自身的复制偏移量给主节点，因此主节点也会保存从节点的复制偏移量 slave0:ip=192.168.1.3,port=6379,state=online,offset=116424,lag=0</li>
+<li>从节点在接收到主节点发送的命令后，也会累加记录自身的偏移量。统计信息在 info replication 中的 slave_repl_offset 中。</li>
+</ul>
+<h3 id="复制积压缓冲区"><a class="markdownIt-Anchor" href="#复制积压缓冲区">#</a> 复制积压缓冲区：</h3>
+<ul>
+<li>复制积压缓冲区是保存在主节点上的一个固定长度的队列，默认大小为 1MB，当主节点有连接的从节点时被创建，这时主节点响应写命令时，不但会把命令发给从节点，还会写入复制积压缓冲区。 在命令传播阶段，主节点除了将写命令发送给从节点，还会发送一份给复制积压缓冲区，作为写命令的备份；除了存储写命令，复制积压缓冲区中还存储了其中 的每个字节对应的复制偏移量 (offset) 。由于复制积压缓冲区定长且先进先出，所以它保存的是主节点最近执行的写命令；时间较早的写命令会被挤出缓冲区。</li>
+</ul>
+<hr>
+<h2 id="生产中常见问题"><a class="markdownIt-Anchor" href="#生产中常见问题">#</a> 生产中常见问题</h2>
+<h5 id="读写分离"><a class="markdownIt-Anchor" href="#读写分离">#</a> 读写分离</h5>
+<p>分流到从节点。主节点写数据，从节点读数据，可能遇到读问题</p>
+<ol>
+<li>复制数据延迟</li>
+<li>读到过期数据</li>
+<li>从节点故障</li>
+</ol>
+<h5 id="主从配置不一致"><a class="markdownIt-Anchor" href="#主从配置不一致">#</a> 主从配置不一致</h5>
+<ol>
+<li>例如 maxmemory 不一致 会导致 丢失数据</li>
+<li>例如数据结构优化参数（例如 hash-max-ziplist-entries）: 内存不一致</li>
+</ol>
+<h5 id="规避全量复制"><a class="markdownIt-Anchor" href="#规避全量复制">#</a> 规避全量复制</h5>
+<ol>
+<li>第一次全量复制的时候  - 第一次不可避免，尽量小节点 ，低峰处理</li>
+<li>节点 运行 ID 不匹配  - 故障转移，例如哨兵或者集群</li>
+<li>复制积压缓存区不足  - 增大复制缓存区配置 rel_backlog_size , 网络增强</li>
+</ol>
+<h5 id="规避复制风暴"><a class="markdownIt-Anchor" href="#规避复制风暴">#</a> 规避复制风暴</h5>
+<ol>
+<li>单机器复制风暴（redis&lt;4.0 当 master 宕机重启，会导致该机器下所有 slave 同时产生复制。避免单机部署一套 redis 主从）====》主节点分散多台机</li>
+</ol>
+<hr>
+<h3 id="最后的注意事项"><a class="markdownIt-Anchor" href="#最后的注意事项">#</a> 最后的注意事项：</h3>
+<ul>
+<li>在上述的过程的实现是从库不开启 AOF 持久化情况下，如果从库开启的 AOF 持久化，重启时候依然使用全量复制。</li>
+<li>之前从 master 复制过来的数据并不会丢失，只是不再同步之前 master（如上图的 6379 节点）后续写入的数据</li>
+<li>slaveof 可以用来改变其所属的 master 节点，即重新成为另一台 master 的 slave，但是新的 master 首先就会把从节点的数据全部清除掉</li>
+<li>关于读写分离延时：读写分离 ，master 会一步将数据复制到 slave，如果 slave 发生阻塞，则会延迟 master 数据的写命令，造成数据不一致的问题。------- 一般不考虑这个问题</li>
+<li>读到过期数据：redis 在删除 key 时有两种策略，一种是懒惰型策略，即只有当 redis 操作这个 key 时才会将 key 删除，第二种是定期采样 key 删除 -------- 当 key 数据非常多时，采样速度比不上 key 生成速度会造成很多过期数据没有删除，因为 redis 一般都是在 master 节点（增加删除数据），slave 查询到过期数据也不能删除。会导致 slave 读到过期数据（在 redis3.2 中已经解决）</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/python/" rel="tag"><i class="ic i-tag"></i> python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-04-25 07:59:57" itemprop="dateModified" datetime="2021-04-25T07:59:57+08:00">2021-04-25</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163142.png" alt="体奈 微信">
+        <p>微信</p>
+      </div>
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163121.png" alt="体奈 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>体奈 <i class="ic i-at"><em>@</em></i>路宇航的博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/22/%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91/" title="日活人数和高并发">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/22/日活人数和高并发/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit4jrvuj20zk0m8785.jpg" title="python的pymongo封装类">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python的pymongo封装类</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/04/26/python%E5%9F%BA%E7%A1%803%EF%BC%88%E5%A4%9A%E4%BB%BB%E5%8A%A1%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitspjpbj20zk0m81ky.jpg" title="python基础3（多任务）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python基础3（多任务）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91"><span class="toc-number">1.</span> <span class="toc-text"> 日活人数和高并发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E4%B8%8E%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text"> Redis 主从复制与优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text"> 主从复制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text"> 主从复制的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%A8%E9%87%8F%E5%A4%8D%E5%88%B6%E5%92%8C%E9%83%A8%E5%88%86%E5%A4%8D%E5%88%B6%E7%AD%89"><span class="toc-number">2.3.</span> <span class="toc-text"> 全量复制和部分复制等</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E9%87%8F%E5%A4%8D%E5%88%B6"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 全量复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%83%A8%E5%88%86%E5%A4%8D%E5%88%B6"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 部分复制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E5%81%8F%E7%A7%BB%E9%87%8F"><span class="toc-number">2.3.3.</span> <span class="toc-text"> 复制偏移量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E7%A7%AF%E5%8E%8B%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-number">2.3.4.</span> <span class="toc-text"> 复制积压缓冲区：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.4.</span> <span class="toc-text"> 生产中常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB"><span class="toc-number">2.4.0.0.1.</span> <span class="toc-text"> 读写分离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="toc-number">2.4.0.0.2.</span> <span class="toc-text"> 主从配置不一致</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%84%E9%81%BF%E5%85%A8%E9%87%8F%E5%A4%8D%E5%88%B6"><span class="toc-number">2.4.0.0.3.</span> <span class="toc-text"> 规避全量复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%84%E9%81%BF%E5%A4%8D%E5%88%B6%E9%A3%8E%E6%9A%B4"><span class="toc-number">2.4.0.0.4.</span> <span class="toc-text"> 规避复制风暴</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 最后的注意事项：</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="体奈"
+      data-src="/images/touxiang.jpg">
+  <p class="name" itemprop="name">体奈</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <a href="https://github.com/tinaidejishuboke" title="https:&#x2F;&#x2F;github.com&#x2F;tinaidejishuboke" class="item github"><i class="ic i-github"></i></a>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS90aW5haTU0NTY5Mjcy" title="https:&#x2F;&#x2F;twitter.com&#x2F;tinai54569272"><i class="ic i-twitter"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6L211c2ljLjE2My5jb20vIy91c2VyL2hvbWU/aWQ9MzQyMTE5NjE5" title="https:&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;342119619"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item youtube" data-url="aHR0cHM6Ly95b3V0dWJlLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;youtube.com&#x2F;yourname"><i class="ic i-youtube"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/04/26/python%E5%9F%BA%E7%A1%803%EF%BC%88%E5%A4%9A%E4%BB%BB%E5%8A%A1%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/05/26/python%E5%9F%BA%E7%A1%801%EF%BC%88%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%89/" title="python基础1（内存管理）">python基础1（内存管理）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" title="redis哨兵模式">redis哨兵模式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/" title="Ant基础按钮">Ant基础按钮</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/03/31/Tree%E7%9A%84%E6%A6%82%E5%BF%B5/" title="Tree的概念">Tree的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" title="vue拦截器的概念">vue拦截器的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/22/%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91/" title="日活人数和高并发">日活人数和高并发</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中websocket和http的区别">vue中websocket和http的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/13/docker%E5%AE%B9%E5%99%A8%E5%BC%8F%E9%83%A8%E7%BD%B2/" title="docker容器式部署">docker容器式部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/26/gitee%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%AB%E7%9A%84%E5%91%BD%E4%BB%A4/" title="gitee企业级别的命令">gitee企业级别的命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/26/python%E5%9F%BA%E7%A1%803%EF%BC%88%E5%A4%9A%E4%BB%BB%E5%8A%A1%EF%BC%89/" title="python基础3（多任务）">python基础3（多任务）</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">体奈 @ 路宇航的博客</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<a href="https://github.com/amehime/hexo-theme-shoka">Shoka</a>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/04/22/日活人数和高并发/',
+    favicon: {
+      show: "（●´3｀●）加油奥利给！！",
+      hide: "(´Д｀)系统崩溃了！！"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

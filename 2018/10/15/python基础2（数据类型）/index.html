@@ -1,0 +1,715 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Python" />
+
+
+<link rel="canonical" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/">
+
+
+
+  <title>
+python基础2（数据类型） |
+路宇航的博客</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">python基础2（数据类型）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2018-10-15 20:39:55">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2018-10-15T20:39:55+08:00">2018-10-15</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">路宇航的博客</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssud2g6nj31hc0u0nmm.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpss64y7ocj31hc0u0hdu.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssf2s57gj31hc0u0hdu.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpsspjcq17j31hc0u0b2a.jpg"></li>
+          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/touxiang.jpg">
+    <meta itemprop="name" content="体奈">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="路宇航的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型">#</a> 数据类型</h1>
+<h2 id=""><a class="markdownIt-Anchor" href="#">#</a> </h2>
+<p>​</p>
+<h2 id="python中常见的数据类型"><a class="markdownIt-Anchor" href="#python中常见的数据类型">#</a> Python 中常见的数据类型</h2>
+<h3 id="int整型"><a class="markdownIt-Anchor" href="#int整型">#</a> int 整型：</h3>
+<p>​	可变不可变：</p>
+<p>​				值不可变类型，改变变量值实则是改变了变量的指向</p>
+<p>​	常用方法：</p>
+<p>​				bit_length（） 返回 int 变量所占二进制位数</p>
+<p>​				int ()   强转字符串为 int 类型（但是字符串里只能是数字）</p>
+<h3 id="set数据具有唯一性"><a class="markdownIt-Anchor" href="#set数据具有唯一性">#</a> set：数据具有唯一性</h3>
+<p>​		可变不可变：</p>
+<p>​				set 是可变类型</p>
+<p>​		有序无序：</p>
+<p>​				无序，不可取值</p>
+<p>​		常用法法：</p>
+<p>​			新增：</p>
+<p>​					   s1.add (元素)</p>
+<p>​					   s1.update(s2)</p>
+<p>​			删除：clear () 清空 set</p>
+<p>​					   pop () 随机删除并返回值</p>
+<p>​     				  remove (元素) 删除指定元素</p>
+<p>s1.isdisjoint (s1) 判断是否没有交集，没有返回 True 有返回 Flase</p>
+<p>s1.issubset (s2) 判断是都是 s2 的子集</p>
+<p>s1.issuperset (s2) 判断是否是 s2 的父集</p>
+<h3 id="dict"><a class="markdownIt-Anchor" href="#dict">#</a> dict</h3>
+<p>​			dict 字典的结构就是‘键 - 值对’，每一个键对应一个值，可以通过键来查询值，dict 字典是无序的</p>
+<p>​			定义的键必须是不可变的，所以可以是数字，字符亦或者是布尔值。</p>
+<p>​			但是值得定义可以使任何数据类型</p>
+<h3 id="list"><a class="markdownIt-Anchor" href="#list">#</a> list</h3>
+<h4 id="1-append"><a class="markdownIt-Anchor" href="#1-append">#</a> 1、append</h4>
+<p>​</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#append用于在列表末尾追加新的对象</span><br><span class="line">a &#x3D; [1,2,3]</span><br><span class="line">a.append(4)                          #the result ： [1, 2, 3, 4]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="2-count"><a class="markdownIt-Anchor" href="#2-count">#</a> 2、count</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#count方法统计某个元素在列表中出现的次数</span><br><span class="line">a &#x3D; [&#39;aa&#39;,&#39;bb&#39;,&#39;cc&#39;,&#39;aa&#39;,&#39;aa&#39;]</span><br><span class="line">print(a.count(&#39;aa&#39;))                 #the result ： 3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3-extend"><a class="markdownIt-Anchor" href="#3-extend">#</a> 3、extend</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#extend方法可以在列表的末尾一次性追加另一个序列中的多个值</span><br><span class="line">a &#x3D; [1,2,3]</span><br><span class="line">b &#x3D; [4,5,6]</span><br><span class="line">a.extend(b)                          #the result ：[1, 2, 3, 4, 5, 6]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="4-index"><a class="markdownIt-Anchor" href="#4-index">#</a> 4、index</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#index函数用于从列表中找出某个值第一个匹配项的索引位置</span><br><span class="line">a &#x3D; [1,2,3,1]</span><br><span class="line">print(a.index(1))                   #the result ： 0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="5-pop"><a class="markdownIt-Anchor" href="#5-pop">#</a> 5、pop</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#pop方法会移除列表中的一个元素（默认是最后一个），并且返回该元素的值</span><br><span class="line">a &#x3D; [1,2,3]</span><br><span class="line">a.pop()                             #the result ： [1, 2]</span><br><span class="line">a.pop(0)</span><br></pre></td></tr></table></figure>
+<h4 id="6-insert"><a class="markdownIt-Anchor" href="#6-insert">#</a> 6、insert</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#insert方法用于将对象插入到列表中</span><br><span class="line">a &#x3D; [1,2,3]</span><br><span class="line">a.insert(0,&#39;aa&#39;)            #the result : [&#39;aa&#39;, 1, 2, 3]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="7-remove"><a class="markdownIt-Anchor" href="#7-remove">#</a> 7、remove</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#remove方法用于移除列表中某个值的第一个匹配项</span><br><span class="line">a &#x3D; [&#39;aa&#39;,&#39;bb&#39;,&#39;cc&#39;,&#39;aa&#39;]</span><br><span class="line">a.remove(&#39;aa&#39;)                      #the result ： [&#39;bb&#39;, &#39;cc&#39;, &#39;aa&#39;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="8-reverse"><a class="markdownIt-Anchor" href="#8-reverse">#</a> 8、reverse</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#reverse方法将列表中的元素反向存放</span><br><span class="line">a &#x3D; [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]</span><br><span class="line">a.reverse()                         #the result ： [&#39;c&#39;, &#39;b&#39;, &#39;a&#39;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="9-sort"><a class="markdownIt-Anchor" href="#9-sort">#</a> 9、sort</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#sort方法用于在原位置对列表进行排序，意味着改变原来的列表，让其中的元素按一定顺序排列</span><br><span class="line">a &#x3D; [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,1,2,3]</span><br><span class="line">a.sort()                           #the result ：[1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="10-enumerate"><a class="markdownIt-Anchor" href="#10-enumerate">#</a> 10、enumerate</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">li &#x3D; [11,22,33,44,55,66]</span><br><span class="line">for k,v in enumerate(li, 1):  # 1.代表 k 从哪个数字开始</span><br><span class="line">    print(k,v)</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line">1 11</span><br><span class="line">2 22</span><br><span class="line">3 33</span><br><span class="line">&#39;&#39;&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="11-ange和xrange"><a class="markdownIt-Anchor" href="#11-ange和xrange">#</a> 11、ange 和 xrange</h4>
+<ul>
+<li>指定范围，生成指定的数字</li>
+<li>注：python3 中的 range 类似 python2 中的 xrange，比如 a = range (1,4) : a 返回的不是列表对象而是一个可迭代对象（&lt;class ‘range’&gt;）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#1、range根据start与stop指定的范围以及step设定的步长，生成一个序列：range([start,] stop[, step])</span><br><span class="line">#2、xrange 用法与 range 完全相同，所不同的是生成的不是一个list对象，而是一个生成器</span><br><span class="line">for i in range(1,10,2):</span><br><span class="line">    print(i)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="12-列表去空"><a class="markdownIt-Anchor" href="#12-列表去空">#</a> 12、列表去空</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 法1：</span><br><span class="line">filter(None, your_list)</span><br><span class="line"></span><br><span class="line"># 法2：</span><br><span class="line">while &#39;&#39; in your_list:</span><br><span class="line">    your_list.remove(&#39;&#39;)</span><br><span class="line"></span><br><span class="line"># 法3：</span><br><span class="line">your_list &#x3D; [x for x in your_list if x !&#x3D; &#39;&#39;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="tuple元祖"><a class="markdownIt-Anchor" href="#tuple元祖">#</a> tuple 元祖</h3>
+<ul>
+<li>
+<p>** 元组定义：** 元组和列表一样，也是一种序列，唯一的不同是元组不能修改</p>
+<p>​	可变不可变：</p>
+<p>​			不可变，如果元素为可变类型，元素内部值是可修改的</p>
+<p>​	常用方法：</p>
+<p>​			count (x), 返回 x 在元组中出现的次数</p>
+<p>​			index (x,start,end) 返回 x 在元组指定范围的索引值，可指定起终点索引</p>
+</li>
+</ul>
+<h4 id="1-创建元组"><a class="markdownIt-Anchor" href="#1-创建元组">#</a> 1 创建元组</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1. 创建元组</span></span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"><span class="comment">#2. 将列表转换成元组</span></span><br><span class="line"><span class="built_in">tuple</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])   </span><br></pre></td></tr></table></figure>
+<h4 id="2-元祖常用方式"><a class="markdownIt-Anchor" href="#2-元祖常用方式">#</a> 2、元祖常用方式</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t&#x3D;(1,2,3,1)</span><br><span class="line">print( t.count(1) )   # 2 : 元祖中出现 1 的次数为2次</span><br><span class="line">print( t.index( 3 ) )  # 2 : 元祖中出现三的索引位置为 2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3-列表和元组常用函数"><a class="markdownIt-Anchor" href="#3-列表和元组常用函数">#</a> 3、列表和元组常用函数</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>com(x,y)</td>
+<td>比较两个值</td>
+</tr>
+<tr>
+<td>len(seq)</td>
+<td>返回序列的长度</td>
+</tr>
+<tr>
+<td>list(seq)</td>
+<td>把序列转换成列表</td>
+</tr>
+<tr>
+<td>max(args)</td>
+<td>返回序列或者参数集合中得最大值</td>
+</tr>
+<tr>
+<td>min(args)</td>
+<td>返回序列或者参数集合中的最小值</td>
+</tr>
+<tr>
+<td>reversed(seq)</td>
+<td>对序列进行反向迭代</td>
+</tr>
+<tr>
+<td>sorted(seq)</td>
+<td>返回已经排列的包含 seq 所有元素的列表</td>
+</tr>
+<tr>
+<td>tuple(seq)</td>
+<td>把序列转换成元组</td>
+</tr>
+</tbody>
+</table>
+<h4 id="列表和元祖区别"><a class="markdownIt-Anchor" href="#列表和元祖区别">#</a> 列表和元祖区别</h4>
+<h5 id="1-列表和元祖区别"><a class="markdownIt-Anchor" href="#1-列表和元祖区别">#</a> 1 列表和元祖区别</h5>
+<ul>
+<li>
+<p><code>可变不可变：</code> 列表可变，元组不可变，除非整体替换</p>
+</li>
+<li>
+<p>存储差异：对列表和元组，我们放置了相同的元素，但是元组的存储空间，却比列表要少 16 字节</p>
+<ul>
+<li>列表为了减小每次增加 / 删减操作时空间分配的开销，Python 每次分配空间时都会额外多分配一些</li>
+</ul>
+</li>
+<li>
+<p>元组比列表的访问和处理速度快。</p>
+</li>
+<li>
+<p>列表不能作为字典的键，而元组可以</p>
+</li>
+<li>
+<p>元祖内存长度大小固定，所以无法进行切片</p>
+</li>
+<li>
+<p>放置一样的元素，元祖的内存空间，比列表少 16 个字节</p>
+<h4 id="举例"><a class="markdownIt-Anchor" href="#举例">#</a> 举例</h4>
+<p>​	式化字符串，格式化字符串后面的（）本质上就是一个元祖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;%s 年龄是 %d 身高是 %。2f&quot; %(&quot;小明&quot;,18,1.75))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="str记录可描述性事物状态"><a class="markdownIt-Anchor" href="#str记录可描述性事物状态">#</a> str：记录可描述性事物状态</h2>
+<p>可变不可变：值不可变类型，改变变量值实则是改变了变量的指向</p>
+<p>str (): 功能：1、工厂函数，i = “egon” &lt;==&gt; i = str (“egon”)</p>
+<p>​                  2、强制类型转换， i = str (555) ==&gt;i = “555”</p>
+<p>常用操作：i = “abcdef”</p>
+<p>索引取值：i [1] = “b”</p>
+<p>切片：i [1:5:2] ==&gt; “bd”</p>
+<p>常用方法：strip (指定去除字符) #去除首尾字符，默认为空格</p>
+<p>replace (old，new，num) #用子字符串替换字符串中的某些字符，可指定替换个数</p>
+<p>split (指定分隔字符，num) # 按指定字符分隔字符串，可指定分隔次数，默认从左到右分隔，从右到左分隔可用 rsplit ()</p>
+<p>str.join (iterable) #将可迭代对象元素按用 str 连接成字符串，注意可迭代对象元素必须是字符串类型，否则报错</p>
+<p>endswith (指定字符，start，end) #判断是否以指定字符开头，可指定索引起终止位置</p>
+<p>startswith ()# 判断是否以指定字符结尾，可指定索引起终止位置</p>
+<p>upper () #字符串字母大写</p>
+<p>lower ()# 字符串字母小写</p>
+<p>isdigit () #判断字符串是否由纯数字组成</p>
+<p>find (指定字符，start，end) # 返回字符在字符串中的起始索引  可指定起始位置索引，找不到返回 - 1</p>
+<p>index (指定字符，start，end)# 返回字符在字符串中起始位置索引，可指定起始位置索引，找不到报错</p>
+<p>…</p>
+<p>总结：所有对字符串的操作都是返回了新的值，原字符串不改变</p>
+<h2 id="py2和py3的区别"><a class="markdownIt-Anchor" href="#py2和py3的区别">#</a> py2 和 py3 的区别</h2>
+<h3 id="class类"><a class="markdownIt-Anchor" href="#class类">#</a> class 类</h3>
+<p>​		python2 的 class 类需要手动继承 object 父类</p>
+<p>​		python3 的 class 类默认自动继承 object 父类</p>
+<h3 id="map函数"><a class="markdownIt-Anchor" href="#map函数">#</a> map 函数</h3>
+<p>​		Python 2 中，map 函数返回 list，</p>
+<p>​		Python 3 中，map 函数返回 iterator。</p>
+<p>Python 2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>(<span class="keyword">lambda</span> x: x+<span class="number">1</span>, <span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">//输出</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br></pre></td></tr></table></figure>
+<p>Python 3</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>(<span class="keyword">lambda</span> x: x+<span class="number">1</span>, <span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">//输出</span><br><span class="line">&lt;<span class="built_in">map</span> <span class="built_in">object</span> at <span class="number">0x7ff5b103d2b0</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="不支持has_key"><a class="markdownIt-Anchor" href="#不支持has_key">#</a> 不支持 has_key</h2>
+<p>Python 3 中的字典不再支持 has_key 方法</p>
+<p>Python 2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">person = &#123;<span class="string">&quot;age&quot;</span>: <span class="number">30</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Xiao Wang&quot;</span>&#125;</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;person has key \&quot;age\&quot;: &quot;</span>, person.has_key(<span class="string">&quot;age&quot;</span>)</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;person has key \&quot;age\&quot;: &quot;</span>, <span class="string">&quot;age&quot;</span> <span class="keyword">in</span> person</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person has key &quot;age&quot;:  True</span><br><span class="line">person has key &quot;age&quot;:  True</span><br></pre></td></tr></table></figure>
+<p>Python 3</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person = &#123;<span class="string">&quot;age&quot;</span>: <span class="number">30</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Xiao Wang&quot;</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;person has key \&quot;age\&quot;: &quot;</span>, <span class="string">&quot;age&quot;</span> <span class="keyword">in</span> person)</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">person has key &quot;age&quot;:  True</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;person has key \&quot;age\&quot;: &quot;</span>, person.has_key(<span class="string">&quot;age&quot;</span>))</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">AttributeError: &#x27;dict&#x27; object has no attribute &#x27;has_key&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="xrange"><a class="markdownIt-Anchor" href="#xrange">#</a> xrange</h3>
+<p>Python 2 中有 range 和 xrange 两个方法。其区别在于，range 返回一个 list，在被调用的时候即返回整个序列；xrange 返回一个 iterator，在每次循环中生成序列的下一个数字。Python 3 中不再支持 xrange 方法，Python 3 中的 range 方法就相当于 Python 2 中的 xrange 方法。</p>
+<h3 id="异常处理"><a class="markdownIt-Anchor" href="#异常处理">#</a> 异常处理</h3>
+<p>Python 2 中捕获异常一般用下面的语法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">1</span>/<span class="number">0</span> </span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError, e:</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">str</span>(e)</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">1</span>/<span class="number">0</span> </span><br><span class="line"><span class="keyword">except</span> ZeroDivisionError <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span> <span class="built_in">str</span>(e)</span><br></pre></td></tr></table></figure>
+<p>Python 3 中不再支持前一种语法，必须使用 as 关键字。</p>
+<h2 id="dict字典有序"><a class="markdownIt-Anchor" href="#dict字典有序">#</a> dict 字典有序</h2>
+<p>在 python2 中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="built_in">dict</span>(b=<span class="number">12</span>, a=<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span> d.keys()</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">[‘a’, ‘b’]</span><br></pre></td></tr></table></figure>
+<p>在 python3 中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="built_in">dict</span>(b=<span class="number">12</span>, a=<span class="number">12</span>)</span><br><span class="line"><span class="built_in">print</span>(d.keys())</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">dict_keys([‘b’, ‘a’])</span><br></pre></td></tr></table></figure>
+<p>python2, python3 的字典 keys 的结果是不一样的。因此，避免使用字典的 keys 的顺序作为有序数组。虽然，如果你一直使用 python2，代码似乎运行正确，但如果移植到 python3，将造成结果错误</p>
+<p>如果必须使用字典，可以使用 collections 模块中的 OrderDict。这能保证在 python2, python3 中一致性。</p>
+<h2 id="python的可变类型和不可变类型"><a class="markdownIt-Anchor" href="#python的可变类型和不可变类型">#</a> python 的可变类型和不可变类型</h2>
+<h3 id="在python中主要有两种数据类型-一种是可变数据类型-另一种是不可变数据类型"><a class="markdownIt-Anchor" href="#在python中主要有两种数据类型-一种是可变数据类型-另一种是不可变数据类型">#</a> 在 Python 中主要有两种数据类型，一种是可变数据类型，另一种是不可变数据类型</h3>
+<blockquote>
+<p><strong>可变类型</strong>（mutable）：列表，字典（key 是不可变）<br>
+<strong>不可变类型</strong>（unmutable）：数字，字符串，元组</p>
+</blockquote>
+<p>可变不可变，从对象内存地址方向来说，是指内存中的值（value）是否可以被改变。<br>
+python 所声明的变量都以对象的形式存在，存在于机器的固定内存之中。</p>
+<h2 id="深拷贝浅拷贝"><a class="markdownIt-Anchor" href="#深拷贝浅拷贝">#</a> 深拷贝浅拷贝</h2>
+<h3 id="浅拷贝"><a class="markdownIt-Anchor" href="#浅拷贝">#</a> 浅拷贝</h3>
+<p>​	在 python 中，对象赋值实际上是对象的引用。当创建一个对象，然后把它赋给另一个变量的时候，python 并没有拷贝这个对象，而只是拷贝了这个对象的引用叫做浅拷贝</p>
+<p><img data-src="https://img2018.cnblogs.com/blog/546188/201810/546188-20181031095328930-1590606034.png" alt="img"></p>
+<h4 id="浅拷贝的三种情况"><a class="markdownIt-Anchor" href="#浅拷贝的三种情况">#</a> 浅拷贝的三种情况</h4>
+<p>​	在 Python 中常见的浅拷贝的三种形式：切片操作、工厂函数、copy 模块中的 copy 函数</p>
+<p>​	切片操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>]]</span><br><span class="line">b = a[:]</span><br><span class="line">b[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">7</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># [1,2,3,[7,5]]</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># [1,2,3,[7,5]]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="工厂函数"><a class="markdownIt-Anchor" href="#工厂函数">#</a> 工厂函数</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">b = <span class="built_in">list</span>(a)</span><br><span class="line">b[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">7</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># (1,2,3,[7,5])</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># [1,2,3,[7,5]]</span></span><br></pre></td></tr></table></figure>
+<h5 id="copycopy"><a class="markdownIt-Anchor" href="#copycopy">#</a> copy.copy()</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line">b = copy.copy(a)</span><br><span class="line">b[<span class="number">3</span>][<span class="number">0</span>] = <span class="number">7</span></span><br><span class="line"><span class="built_in">print</span>(a) <span class="comment"># (1,2,3,[7,5])</span></span><br><span class="line"><span class="built_in">print</span>(b) <span class="comment"># [1,2,3,[7,5]]</span></span><br><span class="line">//在有嵌套和可变类型的情况下，不使用深拷贝的拷贝和赋值都可以认为是浅拷贝</span><br></pre></td></tr></table></figure>
+<h3 id="深拷贝"><a class="markdownIt-Anchor" href="#深拷贝">#</a> 深拷贝</h3>
+<p>包含对象里面的自对象的拷贝，所以原始对象的改变不会造成深拷贝里任何子元素的改变</p>
+<p><img data-src="https://img2018.cnblogs.com/blog/546188/201810/546188-20181031095505004-75839266.png" alt="img"></p>
+<h2 id="形参和实参的区别"><a class="markdownIt-Anchor" href="#形参和实参的区别">#</a> <strong>形参和实参的区别</strong></h2>
+<h3 id="形参"><a class="markdownIt-Anchor" href="#形参">#</a> 形参：</h3>
+<p>​		就是形式上的参数，可以理解为数学的 X，没有实际的值，通过别人赋值后才有意义。相当于变量。</p>
+<h3 id="实参"><a class="markdownIt-Anchor" href="#实参">#</a> 实参：</h3>
+<p>​		就是实际意义上的参数，是一个实际存在的参数，可以是字符串或是数字等。</p>
+<h2 id="不定长参数"><a class="markdownIt-Anchor" href="#不定长参数">#</a> 不定长参数</h2>
+<p>​		在传入额外的参数时可以不用指明参数名，直接传入参数值即可，第二种因为返回的是字典，所以传入时需要指定参数名。</p>
+<p>下面是两个简单的栗子：</p>
+<h3 id="args"><a class="markdownIt-Anchor" href="#args">#</a> *args</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="function"><span class="keyword">def</span> <span class="title">funA</span>(<span class="params">a, b, *args</span>):</span></span><br><span class="line"><span class="number">2</span>     <span class="built_in">print</span>(a)</span><br><span class="line"><span class="number">3</span>     <span class="built_in">print</span>(b)</span><br><span class="line"><span class="number">4</span>     <span class="built_in">print</span>(args)</span><br><span class="line"><span class="number">5</span> </span><br><span class="line"><span class="number">6</span> </span><br><span class="line"><span class="number">7</span> funA(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">输出如下：</span><br><span class="line"><span class="number">1</span> </span><br><span class="line"><span class="number">2</span> </span><br><span class="line">(<span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p>这就只输出了 args 这个元祖中的第一个值。</p>
+<p>*<em>‘ *<em>kwargs ’形式：</em></em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">funB</span>(<span class="params">a, b, **vardict</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="built_in">print</span>(b)</span><br><span class="line">	<span class="built_in">print</span>(vardict)</span><br><span class="line">    <span class="built_in">print</span>(vardict[<span class="string">&#x27;l&#x27;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">funB(<span class="number">1</span>, <span class="number">2</span>, l=<span class="number">3</span>, m=<span class="number">4</span>)</span><br><span class="line">输出结果如下：</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">&#123;<span class="string">&#x27;l&#x27;</span>: <span class="number">3</span>, <span class="string">&#x27;m&#x27;</span>: <span class="number">4</span>&#125;</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<h2 id="值传递引用变量"><a class="markdownIt-Anchor" href="#值传递引用变量">#</a> 值传递引用变量</h2>
+<p>Python 作为一门动态语言，变量本身的类型是不固定的，因此更加灵活。那 Python 到底是值传递还是引用传递呢？</p>
+<h5 id="不可变类型传递的是值"><a class="markdownIt-Anchor" href="#不可变类型传递的是值">#</a> 不可变类型传递的是值</h5>
+<h5 id="可变类型传递的是引用地址"><a class="markdownIt-Anchor" href="#可变类型传递的是引用地址">#</a> 可变类型传递的是引用地址</h5>
+
+      <div class="tags">
+          <a href="/tags/Python/" rel="tag"><i class="ic i-tag"></i> Python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-04-27 19:48:12" itemprop="dateModified" datetime="2021-04-27T19:48:12+08:00">2021-04-27</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163142.png" alt="体奈 微信">
+        <p>微信</p>
+      </div>
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163121.png" alt="体奈 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>体奈 <i class="ic i-at"><em>@</em></i>路宇航的博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/" title="python基础2（数据类型）">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/10/15/python基础2（数据类型）/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitht3xtj20zk0m8k5v.jpg" title="MongoDB的基础命令">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>MongoDB的基础命令</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2018/10/26/gitee%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%AB%E7%9A%84%E5%91%BD%E4%BB%A4/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicitf0kl1j20zk0m87fe.jpg" title="gitee企业级别的命令">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>gitee企业级别的命令</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text"> 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.</span> <span class="toc-text"> Python 中常见的数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#int%E6%95%B4%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text"> int 整型：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set%E6%95%B0%E6%8D%AE%E5%85%B7%E6%9C%89%E5%94%AF%E4%B8%80%E6%80%A7"><span class="toc-number">1.2.2.</span> <span class="toc-text"> set：数据具有唯一性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dict"><span class="toc-number">1.2.3.</span> <span class="toc-text"> dict</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#list"><span class="toc-number">1.2.4.</span> <span class="toc-text"> list</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-append"><span class="toc-number">1.2.4.1.</span> <span class="toc-text"> 1、append</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-count"><span class="toc-number">1.2.4.2.</span> <span class="toc-text"> 2、count</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-extend"><span class="toc-number">1.2.4.3.</span> <span class="toc-text"> 3、extend</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-index"><span class="toc-number">1.2.4.4.</span> <span class="toc-text"> 4、index</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-pop"><span class="toc-number">1.2.4.5.</span> <span class="toc-text"> 5、pop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-insert"><span class="toc-number">1.2.4.6.</span> <span class="toc-text"> 6、insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-remove"><span class="toc-number">1.2.4.7.</span> <span class="toc-text"> 7、remove</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-reverse"><span class="toc-number">1.2.4.8.</span> <span class="toc-text"> 8、reverse</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-sort"><span class="toc-number">1.2.4.9.</span> <span class="toc-text"> 9、sort</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-enumerate"><span class="toc-number">1.2.4.10.</span> <span class="toc-text"> 10、enumerate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-ange%E5%92%8Cxrange"><span class="toc-number">1.2.4.11.</span> <span class="toc-text"> 11、ange 和 xrange</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-%E5%88%97%E8%A1%A8%E5%8E%BB%E7%A9%BA"><span class="toc-number">1.2.4.12.</span> <span class="toc-text"> 12、列表去空</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tuple%E5%85%83%E7%A5%96"><span class="toc-number">1.2.5.</span> <span class="toc-text"> tuple 元祖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%85%83%E7%BB%84"><span class="toc-number">1.2.5.1.</span> <span class="toc-text"> 1 创建元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%85%83%E7%A5%96%E5%B8%B8%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.5.2.</span> <span class="toc-text"> 2、元祖常用方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%BB%84%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.5.3.</span> <span class="toc-text"> 3、列表和元组常用函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%A5%96%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.5.4.</span> <span class="toc-text"> 列表和元祖区别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%A5%96%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.5.4.1.</span> <span class="toc-text"> 1 列表和元祖区别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%BE%8B"><span class="toc-number">1.2.5.5.</span> <span class="toc-text"> 举例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#str%E8%AE%B0%E5%BD%95%E5%8F%AF%E6%8F%8F%E8%BF%B0%E6%80%A7%E4%BA%8B%E7%89%A9%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text"> str：记录可描述性事物状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#py2%E5%92%8Cpy3%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text"> py2 和 py3 的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E7%B1%BB"><span class="toc-number">1.4.1.</span> <span class="toc-text"> class 类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.</span> <span class="toc-text"> map 函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E6%94%AF%E6%8C%81has_key"><span class="toc-number">1.5.</span> <span class="toc-text"> 不支持 has_key</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#xrange"><span class="toc-number">1.5.1.</span> <span class="toc-text"> xrange</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 异常处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dict%E5%AD%97%E5%85%B8%E6%9C%89%E5%BA%8F"><span class="toc-number">1.6.</span> <span class="toc-text"> dict 字典有序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E7%9A%84%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%92%8C%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.7.</span> <span class="toc-text"> python 的可变类型和不可变类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8python%E4%B8%AD%E4%B8%BB%E8%A6%81%E6%9C%89%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E4%B8%80%E7%A7%8D%E6%98%AF%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 在 Python 中主要有两种数据类型，一种是可变数据类型，另一种是不可变数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.8.</span> <span class="toc-text"> 深拷贝浅拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.8.1.</span> <span class="toc-text"> 浅拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%85%E6%8B%B7%E8%B4%9D%E7%9A%84%E4%B8%89%E7%A7%8D%E6%83%85%E5%86%B5"><span class="toc-number">1.8.1.1.</span> <span class="toc-text"> 浅拷贝的三种情况</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.1.1.1.</span> <span class="toc-text"> 工厂函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#copycopy"><span class="toc-number">1.8.1.1.2.</span> <span class="toc-text"> copy.copy()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.8.2.</span> <span class="toc-text"> 深拷贝</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text"> 形参和实参的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%A2%E5%8F%82"><span class="toc-number">1.9.1.</span> <span class="toc-text"> 形参：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E5%8F%82"><span class="toc-number">1.9.2.</span> <span class="toc-text"> 实参：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%AE%9A%E9%95%BF%E5%8F%82%E6%95%B0"><span class="toc-number">1.10.</span> <span class="toc-text"> 不定长参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#args"><span class="toc-number">1.10.1.</span> <span class="toc-text"> *args</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%80%BC%E4%BC%A0%E9%80%92%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">1.11.</span> <span class="toc-text"> 值传递引用变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E4%BC%A0%E9%80%92%E7%9A%84%E6%98%AF%E5%80%BC"><span class="toc-number">1.11.0.0.1.</span> <span class="toc-text"> 不可变类型传递的是值</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E4%BC%A0%E9%80%92%E7%9A%84%E6%98%AF%E5%BC%95%E7%94%A8%E5%9C%B0%E5%9D%80"><span class="toc-number">1.11.0.0.2.</span> <span class="toc-text"> 可变类型传递的是引用地址</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="体奈"
+      data-src="/images/touxiang.jpg">
+  <p class="name" itemprop="name">体奈</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">22</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <a href="https://github.com/tinaidejishuboke" title="https:&#x2F;&#x2F;github.com&#x2F;tinaidejishuboke" class="item github"><i class="ic i-github"></i></a>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS90aW5haTU0NTY5Mjcy" title="https:&#x2F;&#x2F;twitter.com&#x2F;tinai54569272"><i class="ic i-twitter"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6L211c2ljLjE2My5jb20vIy91c2VyL2hvbWU/aWQ9MzQyMTE5NjE5" title="https:&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;342119619"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item youtube" data-url="aHR0cHM6Ly95b3V0dWJlLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;youtube.com&#x2F;yourname"><i class="ic i-youtube"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2018/10/26/gitee%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%AB%E7%9A%84%E5%91%BD%E4%BB%A4/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" title="vue拦截器的概念">vue拦截器的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/26/gitee%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%AB%E7%9A%84%E5%91%BD%E4%BB%A4/" title="gitee企业级别的命令">gitee企业级别的命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" title="vue钩子函数">vue钩子函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/" title="Ant基础按钮">Ant基础按钮</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/13/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="简单介绍三方支付">简单介绍三方支付</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" title="redis哨兵模式">redis哨兵模式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/22/%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91/" title="日活人数和高并发">日活人数和高并发</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中websocket和http的区别">vue中websocket和http的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/04/13/gitee%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="gitee的基础命令">gitee的基础命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/03/18/gitee%E5%92%8Cgethub%E7%9A%84%E5%8C%BA%E5%88%AB/" title="gitee和gethub的区别">gitee和gethub的区别</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">体奈 @ 路宇航的博客</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<a href="https://github.com/amehime/hexo-theme-shoka">Shoka</a>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2018/10/15/python基础2（数据类型）/',
+    favicon: {
+      show: "（●´3｀●）加油奥利给！！",
+      hide: "(´Д｀)系统崩溃了！！"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

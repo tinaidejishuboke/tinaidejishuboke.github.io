@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>路宇航的博客 • Posts by &#34;docker&#34; tag</title>
+        <link>https://github.com/tinaidejishuboke/tinaidejishuboke.github.io</link>
+        <description></description>
+        <language>en</language>
+        <pubDate>Wed, 13 Feb 2019 15:19:26 +0800</pubDate>
+        <lastBuildDate>Wed, 13 Feb 2019 15:19:26 +0800</lastBuildDate>
+        <category>数据库</category>
+        <category>Ant Design</category>
+        <category>Python</category>
+        <category>Celery</category>
+        <category>Docker</category>
+        <category>Git</category>
+        <category>Redis</category>
+        <category>Vue</category>
+        <category>python</category>
+        <category>三方支付</category>
+        <category>算法</category>
+        <item>
+            <guid isPermalink="true">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/02/13/docker%E5%AE%B9%E5%99%A8%E5%BC%8F%E9%83%A8%E7%BD%B2/</guid>
+            <title>docker容器式部署</title>
+            <link>https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/02/13/docker%E5%AE%B9%E5%99%A8%E5%BC%8F%E9%83%A8%E7%BD%B2/</link>
+            <category>Docker</category>
+            <pubDate>Wed, 13 Feb 2019 15:19:26 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;docker容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker容器&#34;&gt;#&lt;/a&gt; docker 容器&lt;/h1&gt;
+&lt;p&gt;容器是镜像的一个运行实例。所不同的是，镜像是静态的只读文件，而容器带有运行时需要的可写文件层。如果认为虚拟机是模拟运行的一整套操作系统（包括内核、应用运行态环境和其他系统环境）和跑在上面的应用，那么 Docker 容器就是独立运行的一个（或一组）应用，以及它们必需的运行环境。&lt;/p&gt;
+&lt;h3 id=&#34;下载容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#下载容器&#34;&gt;#&lt;/a&gt; 下载容器&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;yum -y install docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;启动容器&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#启动容器&#34;&gt;#&lt;/a&gt; 启动容器&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;systemctl start docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;查看docker状态-绿色启动-灰色停止&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看docker状态-绿色启动-灰色停止&#34;&gt;#&lt;/a&gt; 查看 docker 状态 绿色启动 灰色停止&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;systemctl status docker&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;docker镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#docker镜像&#34;&gt;#&lt;/a&gt; docker 镜像&lt;/h1&gt;
+&lt;h3 id=&#34;下载镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#下载镜像&#34;&gt;#&lt;/a&gt; 下载镜像&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;docker pull 镜像名&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;查看镜像&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看镜像&#34;&gt;#&lt;/a&gt; 查看镜像&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;docker images&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&#34;dockerfile&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dockerfile&#34;&gt;#&lt;/a&gt; Dockerfile&lt;/h1&gt;
+&lt;h3 id=&#34;什么是dockerfile&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#什么是dockerfile&#34;&gt;#&lt;/a&gt; 什么是 dockerfile?&lt;/h3&gt;
+&lt;p&gt;Dockerfile 是一个包含用于组合映像的命令的文本文档。可以使用在命令行中调用任何命令。 Docker 通过读取 Dockerfile 中的指令自动生成映像。&lt;br&gt;
+docker build 命令用于从 Dockerfile 构建映像。可以在 docker build 命令中使用 - f 标志指向文件系统中任何位置的 Dockerfile。&lt;/p&gt;
+&lt;h3 id=&#34;dockerfile的基本结构&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dockerfile的基本结构&#34;&gt;#&lt;/a&gt; Dockerfile 的基本结构&lt;/h3&gt;
+&lt;p&gt;Dockerfile 一般分为四部分：基础镜像信息、维护者信息、镜像操作指令和容器启动时执行指令，’#’ 为 Dockerfile 中的注释。&lt;/p&gt;
+&lt;h3 id=&#34;dockerfile文件说明&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#dockerfile文件说明&#34;&gt;#&lt;/a&gt; Dockerfile 文件说明&lt;/h3&gt;
+&lt;p&gt;Docker 以从上到下的顺序运行 Dockerfile 的指令。为了指定基本映像，第一条指令必须是 FROM。一个声明以＃字符开头则被视为注释。可以在 Docker 文件中使用 RUN，CMD，FROM，EXPOSE，ENV 等指令。&lt;/p&gt;
+&lt;h3 id=&#34;from指定基础镜像必须为第一个命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#from指定基础镜像必须为第一个命令&#34;&gt;#&lt;/a&gt; FROM：指定基础镜像，必须为第一个命令&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;格式：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;　　FROM &amp;lt;image&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;　　FROM &amp;lt;image&amp;gt;:&amp;lt;tag&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;　　FROM &amp;lt;image&amp;gt;@&amp;lt;digest&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;示例：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;　　FROM mysql:5.6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;注：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;　　tag或digest是可选的，如果不使用这两个值时，会使用latest版本的基础镜像&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;maintainer-维护者信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#maintainer-维护者信息&#34;&gt;#&lt;/a&gt; MAINTAINER: 维护者信息&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;格式：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    MAINTAINER &amp;lt;name&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;示例：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    MAINTAINER Jasper Xu&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    MAINTAINER sorex@163.com&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    MAINTAINER Jasper Xu &amp;lt;sorex@163.com&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt; ]]></description>
+        </item>
+    </channel>
+</rss>

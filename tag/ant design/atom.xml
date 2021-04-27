@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://github.com/tinaidejishuboke/tinaidejishuboke.github.io</id>
+    <title>路宇航的博客 • Posts by &#34;ant design&#34; tag</title>
+    <link href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io" />
+    <updated>2019-03-31T06:59:19.000Z</updated>
+    <category term="数据库" />
+    <category term="Ant Design" />
+    <category term="Python" />
+    <category term="Celery" />
+    <category term="Docker" />
+    <category term="Git" />
+    <category term="Redis" />
+    <category term="Vue" />
+    <category term="python" />
+    <category term="三方支付" />
+    <category term="算法" />
+    <entry>
+        <id>https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/</id>
+        <title>Ant基础按钮</title>
+        <link rel="alternate" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/"/>
+        <content type="html">&lt;h1 id=&#34;ant的按钮&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ant的按钮&#34;&gt;#&lt;/a&gt; Ant 的按钮&lt;/h1&gt;
+&lt;h2 id=&#34;1-预习aut-design&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-预习aut-design&#34;&gt;#&lt;/a&gt; 1、预习 Aut Design&lt;/h2&gt;
+&lt;h4 id=&#34;1-a-button的使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1-a-button的使用&#34;&gt;#&lt;/a&gt; （1）、a-button 的使用：&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;	button基础的几个按钮：
+
+		&amp;lt;a-button type=&amp;quot;按钮的类型&amp;quot;&amp;gt;按钮的名字&amp;lt;/a-button&amp;gt;
+
+			dashed    danger    primary   link
+
+	loading的作用
+
+		&amp;lt;a-button type=&amp;quot;按钮的类型&amp;quot; loading&amp;gt;按钮的名字&amp;lt;/a-button&amp;gt;
+
+			目的是在网页展示出加载中的样式
+
+	disabled的作用
+
+		&amp;lt;a-button type=&amp;quot;按钮的类型&amp;quot; disabled&amp;gt;按钮的名字&amp;lt;/a-button&amp;gt;
+
+			将按钮设置不可选
+
+	block的作用
+
+		&amp;lt;a-button type=&amp;quot;按钮的类型&amp;quot; block&amp;gt;按钮的名字&amp;lt;/a-button&amp;gt;
+
+			控制按钮的宽度，可以使用style来设置宽高
+
+	ghost的作用
+
+		&amp;lt;a-button type=&amp;quot;按钮的类型&amp;quot; ghost&amp;gt;按钮的名字&amp;lt;/a-button&amp;gt;
+
+			将按钮设置隐身状态
+
+	siez的作用
+
+		&amp;lt;a-button type=&amp;quot;按钮的类型&amp;quot; :size=&amp;quot;size&amp;quot;&amp;gt;按钮的名字&amp;lt;/a-button&amp;gt;
+
+			拥有large，default，small三个按钮的大小，如果不需要变换大小就写size=size
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;​							Ant Design 官方文档 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hbnQuZGVzaWduL2NvbXBvbmVudHMvYnV0dG9uLWNuLw==&#34;&gt;https://ant.design/components/button-cn/&lt;/span&gt;&lt;/p&gt;
+</content>
+        <category term="Ant Design" />
+        <updated>2019-03-31T06:59:19.000Z</updated>
+    </entry>
+</feed>

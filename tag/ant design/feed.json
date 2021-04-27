@@ -1,0 +1,18 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "路宇航的博客 • All posts by \"ant design\" tag",
+    "description": "",
+    "home_page_url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io",
+    "items": [
+        {
+            "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/",
+            "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/",
+            "title": "Ant基础按钮",
+            "date_published": "2019-03-31T06:59:19.000Z",
+            "content_html": "<h1 id=\"ant的按钮\"><a class=\"markdownIt-Anchor\" href=\"#ant的按钮\">#</a> Ant 的按钮</h1>\n<h2 id=\"1-预习aut-design\"><a class=\"markdownIt-Anchor\" href=\"#1-预习aut-design\">#</a> 1、预习 Aut Design</h2>\n<h4 id=\"1-a-button的使用\"><a class=\"markdownIt-Anchor\" href=\"#1-a-button的使用\">#</a> （1）、a-button 的使用：</h4>\n<pre><code>\tbutton基础的几个按钮：\n\n\t\t&lt;a-button type=&quot;按钮的类型&quot;&gt;按钮的名字&lt;/a-button&gt;\n\n\t\t\tdashed    danger    primary   link\n\n\tloading的作用\n\n\t\t&lt;a-button type=&quot;按钮的类型&quot; loading&gt;按钮的名字&lt;/a-button&gt;\n\n\t\t\t目的是在网页展示出加载中的样式\n\n\tdisabled的作用\n\n\t\t&lt;a-button type=&quot;按钮的类型&quot; disabled&gt;按钮的名字&lt;/a-button&gt;\n\n\t\t\t将按钮设置不可选\n\n\tblock的作用\n\n\t\t&lt;a-button type=&quot;按钮的类型&quot; block&gt;按钮的名字&lt;/a-button&gt;\n\n\t\t\t控制按钮的宽度，可以使用style来设置宽高\n\n\tghost的作用\n\n\t\t&lt;a-button type=&quot;按钮的类型&quot; ghost&gt;按钮的名字&lt;/a-button&gt;\n\n\t\t\t将按钮设置隐身状态\n\n\tsiez的作用\n\n\t\t&lt;a-button type=&quot;按钮的类型&quot; :size=&quot;size&quot;&gt;按钮的名字&lt;/a-button&gt;\n\n\t\t\t拥有large，default，small三个按钮的大小，如果不需要变换大小就写size=size\n</code></pre>\n<p>​\t\t\t\t\t\t\tAnt Design 官方文档 <span class=\"exturl\" data-url=\"aHR0cHM6Ly9hbnQuZGVzaWduL2NvbXBvbmVudHMvYnV0dG9uLWNuLw==\">https://ant.design/components/button-cn/</span></p>\n",
+            "tags": [
+                "Ant Design"
+            ]
+        }
+    ]
+}

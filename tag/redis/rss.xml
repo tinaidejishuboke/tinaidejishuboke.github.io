@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>路宇航的博客 • Posts by &#34;redis&#34; tag</title>
+        <link>https://github.com/tinaidejishuboke/tinaidejishuboke.github.io</link>
+        <description></description>
+        <language>en</language>
+        <pubDate>Tue, 25 Jun 2019 08:09:53 +0800</pubDate>
+        <lastBuildDate>Tue, 25 Jun 2019 08:09:53 +0800</lastBuildDate>
+        <category>数据库</category>
+        <category>Ant Design</category>
+        <category>Python</category>
+        <category>Celery</category>
+        <category>Docker</category>
+        <category>Git</category>
+        <category>Redis</category>
+        <category>Vue</category>
+        <category>python</category>
+        <category>三方支付</category>
+        <category>算法</category>
+        <item>
+            <guid isPermalink="true">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/</guid>
+            <title>redis哨兵模式</title>
+            <link>https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/</link>
+            <category>Redis</category>
+            <pubDate>Tue, 25 Jun 2019 08:09:53 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;redis哨兵sentinel模式&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#redis哨兵sentinel模式&#34;&gt;#&lt;/a&gt; Redis 哨兵（Sentinel）模式&lt;/h1&gt;
+&lt;h2 id=&#34;一-主从复制高可用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#一-主从复制高可用&#34;&gt;#&lt;/a&gt; 一、主从复制高可用&lt;/h2&gt;
+&lt;h3 id=&#34;当我们使用主从复制出现的问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#当我们使用主从复制出现的问题&#34;&gt;#&lt;/a&gt; 当我们使用主从复制出现的问题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;手动故障转移&lt;/li&gt;
+&lt;li&gt;写能力和存储能力受限&lt;/li&gt;
+&lt;li&gt;主从复制 -master 宕机故障处理 &lt;img data-src=&#34;https://img-blog.csdnimg.cn/20201017111328608.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;主从切换技术的方法是：当主服务器宕机后，需要手动把一台从服务器切换为主服务器，这就需要人工干预，费事费力，还会造成一段时间内服务不可用。这不是一种推荐的方式，更多时候，我们优先考虑哨兵模式。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;~哨兵模式概述&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#~哨兵模式概述&#34;&gt;#&lt;/a&gt; ～哨兵模式概述&lt;/h3&gt;
+&lt;p&gt;哨兵模式是一种特殊的模式，首先 Redis 提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是哨兵通过发送命令，等待 Redis 服务器响应，从而监控运行的多个 Redis 实例。&lt;/p&gt;
+&lt;p&gt;哨兵主要有两个作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过发送命令，让 Redis 服务器返回监控其运行状态，包括主服务器和从服务器。&lt;/li&gt;
+&lt;li&gt;当哨兵监测到 master 宕机，会自动将 slave 切换成 master，然后通过发布订阅模式通知其他的从服务器，修改配置文件，让它们切换主机。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;然而一个哨兵进程对 Redis 服务器进行监控，可能会出现问题，为此，我们可以使用多个哨兵进行监控。各个哨兵之间还会进行监控，这样就形成了多哨兵模式。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;故障切换（failover）的过程。假设主服务器宕机，哨兵 1 先检测到这个结果，系统并不会马上进行 failover 过程，仅仅是哨兵 1 主观的认为主服务器不可用，这个现象成为主观下线。当后面的哨兵也检测到主服务器不可用，并且数量达到一定值时，那么哨兵之间就会进行一次投票，投票的结果由一个哨兵发起，进行 failover 操作。切换成功后，就会通过发布订阅模式，让各个哨兵把自己监控的从服务器实现切换主机，这个过程称为客观下线。这样对于客户端而言，一切都是透明的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;二-架构说明&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#二-架构说明&#34;&gt;#&lt;/a&gt; 二、架构说明&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://img-blog.csdnimg.cn/20201017111608378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;多个 sentinel 发现并确认 master 有问题。&lt;/li&gt;
+&lt;li&gt;选举出一个 sentinel 作为领导&lt;/li&gt;
+&lt;li&gt;选出一个 slave 作为 master&lt;/li&gt;
+&lt;li&gt;通知其余的 slave 成为新的 master 的 slave&lt;/li&gt;
+&lt;li&gt;通知客户端主从变化&lt;/li&gt;
+&lt;li&gt;等待老的 master 复活成新的 master 的 slave&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;三-安装配置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#三-安装配置&#34;&gt;#&lt;/a&gt; 三、安装配置&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://img-blog.csdnimg.cn/20201018091923731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;配置主从节点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;主节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;启动命令：redis-server redis-&lt;span class=&#34;number&#34;&gt;7000.&lt;/span&gt;conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;port &lt;span class=&#34;number&#34;&gt;7000&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;daemonize yes&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;pidfile /&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt;/run/redis-&lt;span class=&#34;number&#34;&gt;7000.&lt;/span&gt;pid&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;logfile &lt;span class=&#34;string&#34;&gt;&amp;quot;7000.log&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dir &lt;span class=&#34;string&#34;&gt;&amp;quot;/opt/soft/redis/data/&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;Redis 从节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;redis-server redis-&lt;span class=&#34;number&#34;&gt;7001.&lt;/span&gt;conf&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;redis-server redis-&lt;span class=&#34;number&#34;&gt;7002.&lt;/span&gt;conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;slave-1:&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;port &lt;span class=&#34;number&#34;&gt;7002&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;daemonize yes&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;pidfile /&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt;/run/redis-&lt;span class=&#34;number&#34;&gt;7002.&lt;/span&gt;pid&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;logfile &lt;span class=&#34;string&#34;&gt;&amp;quot;7002.log&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dir &lt;span class=&#34;string&#34;&gt;&amp;quot;/opt/soft/redis/data/&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;slaveof &lt;span class=&#34;number&#34;&gt;127.0&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;.0&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;7000&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;slave-2:&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;port &lt;span class=&#34;number&#34;&gt;7001&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;daemonize yes&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;pidfile /&lt;span class=&#34;keyword&#34;&gt;var&lt;/span&gt;/run/redis-&lt;span class=&#34;number&#34;&gt;7001.&lt;/span&gt;pid&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;logfile &lt;span class=&#34;string&#34;&gt;&amp;quot;7001.log&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dir &lt;span class=&#34;string&#34;&gt;&amp;quot;/opt/soft/redis/data/&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;slaveof &lt;span class=&#34;number&#34;&gt;127.0&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;.0&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;7000&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ol&gt;
+&lt;li&gt;配置开启 sentinel 监控主节点&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;sentine 主要配置 编辑 sentinel.conf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;port $&amp;#123;port&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;dir &lt;span class=&#34;string&#34;&gt;&amp;quot;/opt/soft/redis/data/&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;logfile &lt;span class=&#34;string&#34;&gt;&amp;quot;$&amp;#123;port&amp;#125;.log&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;// 配置监听的主服务器，这里sentinel monitor代表监控，mymaster代表服务器的名称，可以自定义，192.168.11.128代表监控的主服务器，6379代表端口，2代表只有两个或两个以上的哨兵认为主服务器不可用的时候，才会进行failover操作。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sentinel monitor mymaster &lt;span class=&#34;number&#34;&gt;127.0&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;.0&lt;/span&gt;&lt;span class=&#34;number&#34;&gt;.1&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;7000&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sentinel down-after-millseseconds mymaster &lt;span class=&#34;number&#34;&gt;30000&lt;/span&gt; &lt;span class=&#34;comment&#34;&gt;//判断主节点时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sentinel parallel-syncs mymaster &lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sentinel failover-timeout mymaster &lt;span class=&#34;number&#34;&gt;180000&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;启动&lt;/p&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;redis-sentinel sentinel.conf&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;可以使用 ps -ef|grep redis-sentinel 命令查看进程、 &lt;img data-src=&#34;https://img-blog.csdnimg.cn/20201018094305376.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;四-实现原理&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#四-实现原理&#34;&gt;#&lt;/a&gt; 四、实现原理&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;故障转移 — java 实现&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight java&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;24&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * 测试Redis哨兵模式&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; * &lt;span class=&#34;doctag&#34;&gt;@author&lt;/span&gt; liu&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;comment&#34;&gt; */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;class&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;TestSentinels&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;meta&#34;&gt;@SuppressWarnings(&amp;quot;resource&amp;quot;)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;meta&#34;&gt;@Test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;keyword&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;keyword&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;testSentinel&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        JedisPoolConfig jedisPoolConfig = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; JedisPoolConfig();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        jedisPoolConfig.setMaxTotal(&lt;span class=&#34;number&#34;&gt;10&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        jedisPoolConfig.setMaxIdle(&lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        jedisPoolConfig.setMinIdle(&lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 哨兵信息&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Set&amp;lt;String&amp;gt; sentinels = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; HashSet&amp;lt;&amp;gt;(Arrays.asList(&lt;span class=&#34;string&#34;&gt;&amp;quot;127.0.0.1:26379&amp;quot;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;quot;1127.0.0.1:26379&amp;quot;&lt;/span&gt;,&lt;span class=&#34;string&#34;&gt;&amp;quot;127.0.0.1:26379&amp;quot;&lt;/span&gt;));&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 创建连接池&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        JedisSentinelPool pool = &lt;span class=&#34;keyword&#34;&gt;new&lt;/span&gt; JedisSentinelPool(&lt;span class=&#34;string&#34;&gt;&amp;quot;mymaster&amp;quot;&lt;/span&gt;, sentinels,jedisPoolConfig,&lt;span class=&#34;string&#34;&gt;&amp;quot;123456&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 获取客户端&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        Jedis jedis = pool.getResource();&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;comment&#34;&gt;// 执行两个命令&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        jedis.set(&lt;span class=&#34;string&#34;&gt;&amp;quot;mykey&amp;quot;&lt;/span&gt;, &lt;span class=&#34;string&#34;&gt;&amp;quot;myvalue&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        String value = jedis.get(&lt;span class=&#34;string&#34;&gt;&amp;quot;mykey&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        System.out.println(value);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果我们把主服务器停掉，在经过一段时间的报错后，redis 集群会恢复 &lt;img data-src=&#34;https://img-blog.csdnimg.cn/20201018100544809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主观下线和客观下线
+&lt;ul&gt;
+&lt;li&gt;主观下线：当前 sentintel 节点认为某个 redis 节点不可用。&lt;/li&gt;
+&lt;li&gt;客观下线：所有 sentinel 节点认为某个 redis 节点不可用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;三个定时任务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;每 10 秒每个 sentinel 对 master 和 slave 执行 info&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;- 发现slave节点&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;- 确认主从关系&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每 2 秒每个 sentinel 通过 master 节点对 channel 交换信息（发布订阅）&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;- 通过_sentinel_:hello频道交互&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;- 交互对节点的“看法”和自身信息&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每 1 秒每个 sentinel 对其他 sentinel 和 redis 执行 ping&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;领导者选举&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;只需要一个 sentinel 节点完成故障转移&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过 sentinel is - master -down -by-addr 命令都希望成为领导者&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;-1. 每个主观下线都Sentitle 节点向其他Sentinel节点发送命令，要求将它设置为领导者&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;-2. 收到命令对Sentinel节点如果没有同一通过其他Sentinel节点发送的命令，那么就将同一该请求，否则拒绝&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;-3. 如果该Sentinel节点发现直接的票数已经超过Sentinel集合半数且超过quorum，那么它将成为领导者&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;-4. 如果此过程由多个Sentinel节点成为领导者，那么将来等待一段时间重新进行选举&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://img-blog.csdnimg.cn/20201018102554444.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxOTc3ODM4,size_16,color_FFFFFF,t_70#pic_center&#34; alt=&#34;在这里插入图片描述&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;故障转移（Sentinel 领导者节点完成）
+&lt;ul&gt;
+&lt;li&gt;1. 从 slave 节点中选出一个 “合适点” 节点作为 master 节点&lt;/li&gt;
+&lt;li&gt;2. 对上面对 slave 节点执行 slaveof no one 命令让其成为 master 节点。&lt;/li&gt;
+&lt;li&gt;3. 向剩余的 slave 节点发送命令，让它们成为新的 maater 节点的 slave 节点，复制规避和 parallel-syncs 参数有关&lt;/li&gt;
+&lt;li&gt;4. 更新对原来 master 节点配置为 slave，并保持着对其 “关注”，当其恢复后命令他去复制新对 master 节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;选择 “合适的” slave 节点
+&lt;ul&gt;
+&lt;li&gt;1. 选择 slave-priority（slave 节点优先级）最高对 slave 节点，如果存在返回，不存在继续&lt;/li&gt;
+&lt;li&gt;2. 选择复制偏移量最大的 slave 节点，复制最完整，存在返回，不存在继续&lt;/li&gt;
+&lt;li&gt;3. 选择 runId 最小的 slave 节点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;五-需要说明的问题&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#五-需要说明的问题&#34;&gt;#&lt;/a&gt; 五、需要说明的问题&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;尽可能在不同物理机上和同一个网络部署 Redis sentinel 的所有节点&lt;/li&gt;
+&lt;li&gt;Redis sentinel 中的 sentinel 节点个数应该大于等于 3 且最好是奇数。（节点数多可以保证高可用）&lt;/li&gt;
+&lt;li&gt;Redis sentinel 中的数据节点和普通数据节点没有区别。每个 sentinel 节点在本质上还是一个 Redis 实例，只不过和 Redis 数据节点不同的是，其主要作用是监控 Redis 数据节点&lt;/li&gt;
+&lt;li&gt;客户端初始化时连接的是 sentinel 节点集合，不再是具体的 Redis 节点，但 sentinel 只是配置中心不是代理。&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

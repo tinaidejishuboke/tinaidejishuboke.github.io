@@ -1,0 +1,533 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="路宇航的博客" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Python" />
+
+
+<link rel="canonical" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%804%EF%BC%88%E8%AF%AD%E6%B3%95%E7%B3%96%EF%BC%89/">
+
+
+
+  <title>
+python基础4（语法糖） |
+路宇航的博客</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">python基础4（语法糖）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2021-05-06 08:16:50">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-05-06T08:16:50+08:00">2021-05-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">路宇航的博客</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/008i2EfTly8gpssoxbd0sj31hc0u0npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/008i2EfTly8gpss369dtdj31hc0u0b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/008i2EfTly8gpssp6ni08j31hc0u0qv5.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%804%EF%BC%88%E8%AF%AD%E6%B3%95%E7%B3%96%EF%BC%89/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/touxiang.jpg">
+    <meta itemprop="name" content="体奈">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="路宇航的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="python语法糖"><a class="markdownIt-Anchor" href="#python语法糖">#</a> python 语法糖</h1>
+<h4 id="语法糖说明"><a class="markdownIt-Anchor" href="#语法糖说明">#</a> 语法糖说明</h4>
+<pre><code>计算机语言中特殊的某种语法
+这种语法对语言的功能并没有影响
+对于程序员有更好的易用性
+能够增加程序的可读性
+通过这类方式编写出来的代码，即好看又好用,好似糖一般的语法
+</code></pre>
+<h5 id="一个简单的例子"><a class="markdownIt-Anchor" href="#一个简单的例子">#</a> 一个简单的例子</h5>
+<p>假设：有 2 个数字，现需要从中得到最大的那个数字。应该如何实现？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="number">2</span> </span><br><span class="line">c = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> b &gt; c:</span><br><span class="line">    a = b</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    a = c</span><br></pre></td></tr></table></figure>
+<p>其实还有更多的其它实现方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">max</span>(b, c)</span><br><span class="line">a = c &gt; b <span class="keyword">and</span> c <span class="keyword">or</span> b</span><br><span class="line">a = c <span class="keyword">if</span> c &gt; b <span class="keyword">else</span> b</span><br><span class="line">a = [b, c][c &gt; b]</span><br></pre></td></tr></table></figure>
+<p>这些都是可以实现我们需求的方法，殊途同归。但是它们在易用性、简洁性、可读性、性能等方面的表现都不一样。那么问题来了！</p>
+<p>哪个才是我们所说的语法糖呢？</p>
+<p>一些常见的语法糖</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span>; b = <span class="number">2</span>; c = <span class="number">3</span></span><br><span class="line">b, c = c, b</span><br><span class="line">a &lt; c &lt; b &lt; <span class="number">5</span></span><br><span class="line"><span class="string">&#x27;1&#x27;</span> * <span class="number">100</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] + [<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<p>可以看到这些语法，在其它语言里通常不会出现的。但是在 Python 中却神奇的被支持了，所以这些都是当之无愧的 Python 语法糖。</p>
+<p>切片操作<br>
+像列表这类可以支持<strong>切片</strong>操作的对象，则是我最初喜欢 Python 的一个非常重要的原因。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">l = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"><span class="built_in">print</span>(l[::-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(l[<span class="number">2</span>])</span><br><span class="line"><span class="built_in">print</span>(l[:<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(l[<span class="number">3</span>:])</span><br><span class="line"><span class="built_in">print</span>(l[<span class="number">2</span>:<span class="number">4</span>])</span><br><span class="line"><span class="built_in">print</span>(l[:-<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(l[:])</span><br><span class="line"><span class="built_in">print</span>(l[::<span class="number">2</span>])</span><br><span class="line"><span class="comment">#输出</span></span><br><span class="line"><span class="comment">#[9, 8, 7, 6, 5, 4, 3, 2, 1]</span></span><br><span class="line"><span class="comment">#3</span></span><br><span class="line"><span class="comment">#[1, 2, 3]</span></span><br><span class="line"><span class="comment">#[4, 5, 6, 7, 8, 9]</span></span><br><span class="line"><span class="comment">#[3, 4]</span></span><br><span class="line"><span class="comment">#[1, 2, 3, 4, 5, 6, 7, 8]</span></span><br><span class="line"><span class="comment">#[1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br><span class="line"><span class="comment">#[1, 3, 5, 7, 9]</span></span><br></pre></td></tr></table></figure>
+<p>with 语法糖<br>
+ with 语法糖实现的是一个上下文管理器，它主要的特点就是帮助我们自动管理上下文的衔接。即在需要的时候传给我们，不需要的时候自动关闭上下文对象。 需要注意的是：使用 with 语法糖是有条件的。即其后跟的对象必须要实现__enter__和__exit__这 2 个魔法属性。具体使用的例子如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;example_2.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">print</span>(line, end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>else 语法糖<br>
+ Python 中提供一类 else 的语法，它可以在原有语法基础之上，支持更多一种情况的选择。 主要有 for-else，while-else，try-else。需要注意的是，for-else 和 while-else 需要和 break 语句配合时使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="keyword">else</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;for end&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">else</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;while end&#x27;</span>)</span><br><span class="line"><span class="keyword">try</span> <span class="keyword">else</span></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="number">1</span> / <span class="number">1</span></span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;except occured&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;it is fine&#x27;</span>)</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;i am finally&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>函数相关语法糖<br>
+ Python 中函数我们都非常的熟悉，而在函数的使用上却有着与其它语言不同的选择。</p>
+<p>动态参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">example_dynamic_args</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;动态参数&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(args)</span><br><span class="line">    <span class="built_in">print</span>(kwargs)</span><br></pre></td></tr></table></figure>
+<p>这个函数的参数与函数相比，其参数会有些不同之处。因为它们在接收参数时使用了不同方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">example_dynamic_args(<span class="number">1</span>,<span class="string">&#x27;2&#x27;</span>, <span class="literal">True</span>, name=<span class="string">&#x27;xiaowu&#x27;</span>, age=<span class="number">18</span>)</span><br><span class="line">l = [<span class="number">1</span>,<span class="string">&#x27;2&#x27;</span>,<span class="literal">False</span>]</span><br><span class="line">d = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;xiaoming&#x27;</span>, age: <span class="string">&#x27;16&#x27;</span>&#125;</span><br><span class="line">example_dynamic_args(*l, **d)</span><br></pre></td></tr></table></figure>
+<h3 id="匿名函数"><a class="markdownIt-Anchor" href="#匿名函数">#</a> 匿名函数</h3>
+<p>​		匿名函数在很多的语言中都存在，通常在临时需要一个函数的场景下使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> x: x * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>​		Python 中使用 lambda 表达式来实现匿名函数，观察上面的 lambda 表达式。</p>
+<h5 id="其特点如下"><a class="markdownIt-Anchor" href="#其特点如下">#</a> 其特点如下：</h5>
+<p>​	可以接受函数</p>
+<p>​	函数体只有一个表达式</p>
+<p>​	无需显式的 return 语句</p>
+<p>​	整个表达式在一个语法行内实现</p>
+<p>​	lambda 表达式除了一些语法上的限制之外；其它函数该有的特性它都有。比如：支持动态参数。下面是一个使用 lambda 表示的场景：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">in_dict = &#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">10</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">2</span>, <span class="string">&#x27;c&#x27;</span>: <span class="number">3</span>&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;in_dict:&#x27;</span>, in_dict)</span><br><span class="line">out_dict = <span class="built_in">sorted</span>(in_dict.items(), key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;out_dict&#x27;</span>, out_dict)</span><br></pre></td></tr></table></figure>
+<p>推导表达式<br>
+推导表达式是 Python 中常见的语法糖，在很多的数据处理场景中，我们可能会使用的到。 最常见的就是列表推导表达式，可以用来过滤、处理列表中的子项并输出一个新的列表。除此之外还有几个推导式也是非常好用的。</p>
+<p>列表推导表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">in_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array before:&#x27;</span>, in_list)</span><br><span class="line">array = [i <span class="keyword">for</span> i <span class="keyword">in</span> in_list <span class="keyword">if</span> i % <span class="number">2</span> != <span class="number">0</span>] <span class="comment"># 列表推导表达式</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array after:&#x27;</span>, array)</span><br></pre></td></tr></table></figure>
+<p>生成器推导表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">in_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array before:&#x27;</span>, in_list)</span><br><span class="line">array = (i <span class="keyword">for</span> i <span class="keyword">in</span> in_list <span class="keyword">if</span> i % <span class="number">2</span> != <span class="number">0</span>) <span class="comment"># 生成器推导表达式</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array after:&#x27;</span>, array)</span><br></pre></td></tr></table></figure>
+<p>集合推导表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">in_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array before:&#x27;</span>, in_list)</span><br><span class="line">array = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> in_list <span class="keyword">if</span> i % <span class="number">2</span> != <span class="number">0</span>&#125; <span class="comment"># 集合推导表达式</span></span><br></pre></td></tr></table></figure>
+<p>print(‘array after:’, array)<br>
+ 字典推导表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">in_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array before:&#x27;</span>, in_list)</span><br><span class="line">array = &#123;i: i * <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> in_list <span class="keyword">if</span> i % <span class="number">2</span> != <span class="number">0</span>&#125;  <span class="comment"># 字典推导表达式</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;array after:&#x27;</span>, array)</span><br></pre></td></tr></table></figure>
+<p>不同推导式在语法使用上基本一致，只是在返回对象的类型上有所差别。</p>
+<p>yield 表达式<br>
+ yield 语法也是 Python 中比较有特点的语法糖，可以说是特有的。虽然其它语言有实现类似机制的功能。 yield 是 Python 中实现 ** 协程 (coroutine)** 的一个重要基础。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">example_generator</span>(<span class="params">in_list</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;生成器&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> in_list:</span><br><span class="line">        <span class="keyword">yield</span> i * <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>装饰器<br>
+重要的往往在最后面，装饰器是学习 Python 绕不过去的坎。就像学习 Java 要理解面向对象和设计模式一样。 学习 Python，你就应该要掌握好闭包、生成器、装饰器等相关知识。而对于编写高并发程序时则要掌握协程相关知识。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">example_decorator</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;装饰器&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inner</span>():</span></span><br><span class="line">        func()</span><br><span class="line">	<span class="keyword">return</span> inner</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/Python/" rel="tag"><i class="ic i-tag"></i> Python</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2021-05-06 09:04:14" itemprop="dateModified" datetime="2021-05-06T09:04:14+08:00">2021-05-06</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163142.png" alt="体奈 微信">
+        <p>微信</p>
+      </div>
+      <div>
+        <img data-src="/images/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210422163121.png" alt="体奈 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>体奈 <i class="ic i-at"><em>@</em></i>路宇航的博客
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%804%EF%BC%88%E8%AF%AD%E6%B3%95%E7%B3%96%EF%BC%89/" title="python基础4（语法糖）">https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python基础4（语法糖）/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/04/28/python%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;008i2EfTly8gpss3oedqfj31hc0u07wj.jpg" title="python设计模式之观察者模式">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python设计模式之观察者模式</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/05/06/python%E5%9F%BA%E7%A1%805%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva4.sinaimg.cn&#x2F;mw690&#x2F;008i2EfTly8gpsspjcq17j31hc0u0b2a.jpg" title="python基础5（算法）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>python基础5（算法）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#python%E8%AF%AD%E6%B3%95%E7%B3%96"><span class="toc-number">1.</span> <span class="toc-text"> python 语法糖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%B3%96%E8%AF%B4%E6%98%8E"><span class="toc-number">1.0.0.1.</span> <span class="toc-text"> 语法糖说明</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="toc-number">1.0.0.1.1.</span> <span class="toc-text"> 一个简单的例子</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 匿名函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E7%89%B9%E7%82%B9%E5%A6%82%E4%B8%8B"><span class="toc-number">1.0.1.0.1.</span> <span class="toc-text"> 其特点如下：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="体奈"
+      data-src="/images/touxiang.jpg">
+  <p class="name" itemprop="name">体奈</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">11</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <a href="https://github.com/tinaidejishuboke" title="https:&#x2F;&#x2F;github.com&#x2F;tinaidejishuboke" class="item github"><i class="ic i-github"></i></a>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS90aW5haTU0NTY5Mjcy" title="https:&#x2F;&#x2F;twitter.com&#x2F;tinai54569272"><i class="ic i-twitter"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6L211c2ljLjE2My5jb20vIy91c2VyL2hvbWU/aWQ9MzQyMTE5NjE5" title="https:&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;342119619"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item youtube" data-url="aHR0cHM6Ly95b3V0dWJlLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;youtube.com&#x2F;yourname"><i class="ic i-youtube"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/04/28/python%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/05/06/python%E5%9F%BA%E7%A1%805%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中websocket和http的区别">vue中websocket和http的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" title="vue拦截器的概念">vue拦截器的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/06/python%E5%9F%BA%E7%A1%805%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89/" title="python基础5（算法）">python基础5（算法）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/06/python%E5%9F%BA%E7%A1%804%EF%BC%88%E8%AF%AD%E6%B3%95%E7%B3%96%EF%BC%89/" title="python基础4（语法糖）">python基础4（语法糖）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="MongoDB的基础命令">MongoDB的基础命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2019/02/13/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="简单介绍三方支付">简单介绍三方支付</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/" title="python基础2（数据类型）">python基础2（数据类型）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" title="python的pymongo封装类">python的pymongo封装类</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/05/26/python%E5%9F%BA%E7%A1%801%EF%BC%88%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%89/" title="python基础1（内存管理）">python基础1（内存管理）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/07/13/python%E4%B8%ADwith%E4%B8%8A%E4%B8%8B%E6%96%87%E7%AE%A1%E7%90%86/" title="python中with上下文管理">python中with上下文管理</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">体奈 @ 路宇航的博客</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<a href="https://github.com/amehime/hexo-theme-shoka">Shoka</a>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/05/06/python基础4（语法糖）/',
+    favicon: {
+      show: "（●´3｀●）加油奥利给！！",
+      hide: "(´Д｀)系统崩溃了！！"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

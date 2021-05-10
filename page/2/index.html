@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssud2g6nj31hc0u0nmm.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssonqmu9j31hc0u0b2b.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpssc2gebej31hc0u07wj.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/008i2EfTly8gpss3oedqfj31hc0u07wj.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1giciszlczyj20zk0m816d.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitzannuj20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/008i2EfTly8gpssp6ni08j31hc0u0qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/008i2EfTly8gpssoxbd0sj31hc0u0npd.jpg"></li>
+          <li class="item" data-background-image="https://tva4.sinaimg.cn/large/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></li>
         </ul>
       </div>
     </header>
@@ -119,7 +119,106 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2020/05/26/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E3%80%90snowflake%E3%80%91/" itemprop="url" title="雪花算法【snowflake】"><img data-src="https://tva1.sinaimg.cn/mw690/008i2EfTly8gpssc2gebej31hc0u07wj.jpg"></a>
+    <a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" itemprop="url" title="python的pymongo封装类"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2021-04-13 17:08:06">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2021-04-13T17:08:06+08:00">2021-04-13</time>
+  </span>
+</div>
+
+    <h3><a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" itemprop="url" title="python的pymongo封装类">python的pymongo封装类</a></h3>
+    <div class="excerpt">
+        # 1. 创建一个 MyPyMongo.py 文件
+# 2. 导包
+1from pymongo import MongoClient
+# 3. 创建类
+1234567891011121314class MyMongo: def __init__(self, database, collection, **mongo_kwargs): # database 数据库名 collection 集合名(表) **mongo_kwargs 端口号 地址 self.data &amp;#x3D; MongoClient(**mongo_kwargs) # 连接MongoDB self.db...
+    </div>
+    <a href="/2021/04/13/python%E7%9A%84pymongo%E5%B0%81%E8%A3%85%E7%B1%BB/" itemprop="url" title="python的pymongo封装类" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2021/03/31/Tree%E7%9A%84%E6%A6%82%E5%BF%B5/" itemprop="url" title="Tree的概念"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2021-03-31 21:26:37">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2021-03-31T21:26:37+08:00">2021-03-31</time>
+  </span>
+</div>
+
+    <h3><a href="/2021/03/31/Tree%E7%9A%84%E6%A6%82%E5%BF%B5/" itemprop="url" title="Tree的概念">Tree的概念</a></h3>
+    <div class="excerpt">
+        # 二叉树的概念
+# 概念：二叉树是树形结构的一个重要类型，二叉树特点是每个结点最多只能有两棵子树，且有左右之分，就是递归调用自己，定一个根节点，二叉树递归的最后一层，就被称为叶节点。
+# 2、二叉树先序遍历就是先访问自己，然后左子树，然后右子树。
+
+# 0,1,3,7,8,4,9,2,5,6
+# 3、二叉树的中序遍历是先访问左子树，然后访问自己，最后右子树。
+
+# 7,3,8,1,9,4,0,5,2,6
+    </div>
+    <a href="/2021/03/31/Tree%E7%9A%84%E6%A6%82%E5%BF%B5/" itemprop="url" title="Tree的概念" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" itemprop="url" title="vue拦截器的概念"><img data-src="https://tva4.sinaimg.cn/mw690/008i2EfTly8gpssoxbd0sj31hc0u0npd.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2020-08-13 15:18:19">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2020-08-13T15:18:19+08:00">2020-08-13</time>
+  </span>
+</div>
+
+    <h3><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" itemprop="url" title="vue拦截器的概念">vue拦截器的概念</a></h3>
+    <div class="excerpt">
+        # 一、拦截器的基本介绍
+
+什么是拦截器:
+
+想拦截住我们的请求过程
+比如你想在请求前做一些事情，拦截请求，等这件事做完之后再去请求
+或者是要等请求结束之后做一些事情，再返回数据，可以拦截处理之后再返回
+
+拦截器的作用:
+
+一般来说，像数据交互之类的都要用到不同的身份验证，比如登录 token 验证，验证用户
+是否登录，如果没有登录，该用户就不能操作登录之后的内容，这就是拦截器的作用
+
+# 二、拦截器的分类
+请求拦截器和响应拦截器 / 路由拦截器
+PS:一般在请求拦截器中增加标识token或其他请求配置，在响应拦截器中对统一错误或状态码进行处理
+① axios...
+    </div>
+    <a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" itemprop="url" title="vue拦截器的概念" class="btn">more...</a>
+  </div>
+</article>
+
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2020/05/26/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95%E3%80%90snowflake%E3%80%91/" itemprop="url" title="雪花算法【snowflake】"><img data-src="https://tva4.sinaimg.cn/mw690/008i2EfTly8gpss64y7ocj31hc0u0hdu.jpg"></a>
   </div>
   <div class="info">
     
@@ -154,7 +253,7 @@
         
 <article class="item">
   <div class="cover">
-    <a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url" title="vue中websocket和http的区别"><img data-src="https://tva1.sinaimg.cn/mw690/008i2EfTly8gpsspjcq17j31hc0u0b2a.jpg"></a>
+    <a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url" title="vue中websocket和http的区别"><img data-src="https://tva4.sinaimg.cn/mw690/6833939bly1gicitht3xtj20zk0m8k5v.jpg"></a>
   </div>
   <div class="info">
     
@@ -187,116 +286,6 @@ Websocket 是一种网络通信协议，是 HTML5 开始提供的一种在单个
 HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Response ，那么在 HTTP1.0...
     </div>
     <a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="url" title="vue中websocket和http的区别" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" itemprop="url" title="vue钩子函数"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gicit4jrvuj20zk0m8785.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2019-09-13 15:16:54">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-09-13T15:16:54+08:00">2019-09-13</time>
-  </span>
-</div>
-
-    <h3><a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" itemprop="url" title="vue钩子函数">vue钩子函数</a></h3>
-    <div class="excerpt">
-        # 一、路由钩子函数相关概念
-
-什么情况下要使用路由的钩子函数？
-
-在路由跳转的时候，我们需要一些权限判断或者其他操作，这个时候就需要使用路由的钩子函数
-
-路由钩子函数的定义:
-
-路由钩子主要是给使用者在路由发生变化时进行一些特殊的处理而定义的函数
-
-# 二、路由钩子的分类
-# 1、全局路由钩子
-
-在初始化 VueRouter 以后，直接使用 router 实例进行注册
-包括两个钩子：beforeEach、afterEach（每个路由切换前或者切换后调用）
-
-#...
-    </div>
-    <a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" itemprop="url" title="vue钩子函数" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" itemprop="url" title="redis哨兵模式"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gicis081o9j20zk0m8dmr.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2019-06-25 08:09:53">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-06-25T08:09:53+08:00">2019-06-25</time>
-  </span>
-</div>
-
-    <h3><a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" itemprop="url" title="redis哨兵模式">redis哨兵模式</a></h3>
-    <div class="excerpt">
-        # Redis 哨兵（Sentinel）模式
-# 一、主从复制高可用
-# 当我们使用主从复制出现的问题
-
-手动故障转移
-写能力和存储能力受限
-主从复制 -master 宕机故障处理
-
-主从切换技术的方法是：当主服务器宕机后，需要手动把一台从服务器切换为主服务器，这就需要人工干预，费事费力，还会造成一段时间内服务不可用。这不是一种推荐的方式，更多时候，我们优先考虑哨兵模式。
-
-# ～哨兵模式概述
-哨兵模式是一种特殊的模式，首先 Redis 提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行。其原理是哨兵通过发送命令，等待 Redis 服务器响应，从而监控运行的多个 Redis...
-    </div>
-    <a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" itemprop="url" title="redis哨兵模式" class="btn">more...</a>
-  </div>
-</article>
-
-        
-<article class="item">
-  <div class="cover">
-    <a href="/2019/03/31/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" itemprop="url" title="项目总结"><img data-src="https://tva1.sinaimg.cn/mw690/6833939bly1gicit31ffoj20zk0m8naf.jpg"></a>
-  </div>
-  <div class="info">
-    
-<div class="meta">
-  <span class="item" title="Created: 2019-03-31 15:03:42">
-    <span class="icon">
-      <i class="ic i-calendar"></i>
-    </span>
-    <time itemprop="dateCreated datePublished" datetime="2019-03-31T15:03:42+08:00">2019-03-31</time>
-  </span>
-</div>
-
-    <h3><a href="/2019/03/31/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" itemprop="url" title="项目总结">项目总结</a></h3>
-    <div class="excerpt">
-        # 项目总结
-# 1、前端 ant desgin 的使用：
-# 1、前端 ant 组件为我们配置好了多种样式，复制粘贴修改参数即可，
-1https:&amp;#x2F;&amp;#x2F;ant.design&amp;#x2F;components&amp;#x2F;button-cn&amp;#x2F;
-# 2、docker 的基础命令和操作：
-# 1、查看所有镜像：
-​				docker images
-# 2、删除镜像：
-​				docker
-# 3、暂停镜像（不然无法删除）：
-​				docker stop $(docker ps -a -q)
-# 4、如果想要删除所有...
-    </div>
-    <a href="/2019/03/31/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" itemprop="url" title="项目总结" class="btn">more...</a>
   </div>
 </article>
 
@@ -335,7 +324,7 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
 <nav class="state">
     <div class="item posts">
       <a href="/archives/">
-        <span class="count">22</span>
+        <span class="count">25</span>
         <span class="name">posts</span>
       </a>
     </div>
@@ -397,7 +386,7 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="MongoDB的基础命令">MongoDB的基础命令</a></span>
+    <span><a href="/2020/04/13/vue%E4%B8%ADwebsocket%E5%92%8Chttp%E7%9A%84%E5%8C%BA%E5%88%AB/" title="vue中websocket和http的区别">vue中websocket和http的区别</a></span>
   </li>
 
       
@@ -406,43 +395,7 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" title="redis哨兵模式">redis哨兵模式</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2019/02/13/%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D%E4%B8%89%E6%96%B9%E6%94%AF%E4%BB%98/" title="简单介绍三方支付">简单介绍三方支付</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2019/03/31/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="项目总结">项目总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2019/03/31/Ant%E5%9F%BA%E7%A1%80%E6%8C%89%E9%92%AE/" title="Ant基础按钮">Ant基础按钮</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" title="vue拦截器的概念">vue拦截器的概念</a></span>
+    <span><a href="/2018/04/15/hello-world/" title="Hello World">Hello World</a></span>
   </li>
 
       
@@ -460,7 +413,7 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2019/03/18/gitee%E5%92%8Cgethub%E7%9A%84%E5%8C%BA%E5%88%AB/" title="gitee和gethub的区别">gitee和gethub的区别</a></span>
+    <span><a href="/2018/10/15/python%E5%9F%BA%E7%A1%802%EF%BC%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%89/" title="python基础2（数据类型）">python基础2（数据类型）</a></span>
   </li>
 
       
@@ -469,7 +422,7 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/03/31/Tree%E7%9A%84%E6%A6%82%E5%BF%B5/" title="Tree的概念">Tree的概念</a></span>
+    <span><a href="/2018/05/26/python%E5%9F%BA%E7%A1%801%EF%BC%88%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%EF%BC%89/" title="python基础1（内存管理）">python基础1（内存管理）</a></span>
   </li>
 
       
@@ -478,7 +431,43 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2019/09/13/vue%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0/" title="vue钩子函数">vue钩子函数</a></span>
+    <span><a href="/2019/06/25/redis%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" title="redis哨兵模式">redis哨兵模式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/09/13/MongoDB%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="MongoDB的基础命令">MongoDB的基础命令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2020/08/13/vue%E6%8B%A6%E6%88%AA%E5%99%A8%E7%9A%84%E6%A6%82%E5%BF%B5/" title="vue拦截器的概念">vue拦截器的概念</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/06/python%E5%9F%BA%E7%A1%805%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89/" title="python基础5（算法）">python基础5（算法）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2018/10/26/gitee%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%88%AB%E7%9A%84%E5%91%BD%E4%BB%A4/" title="gitee企业级别的命令">gitee企业级别的命令</a></span>
   </li>
 
   </ul>
@@ -517,7 +506,7 @@ HTTP 的生命周期通过 Request 来界定，也就是一个 Request 一个 Re
     search : {
       placeholder: "Search for Posts",
       empty: "We didn't find any results for the search: ${query}",
-      stats: "${time} ms以内に ${hits} 件の結果が見つかりました"
+      stats: "${time} ms 内找到 ${hits} 条结果"
     },
     valine: true,fancybox: true,copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
     ignores : [

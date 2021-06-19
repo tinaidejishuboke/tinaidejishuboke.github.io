@@ -5,16 +5,6 @@
     "home_page_url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io",
     "items": [
         {
-            "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%805%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89/",
-            "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%805%EF%BC%88%E7%AE%97%E6%B3%95%EF%BC%89/",
-            "title": "python基础5（算法）",
-            "date_published": "2021-05-06T01:03:52.000Z",
-            "content_html": "<p>算法</p>\n<p>冒泡排序<br>\n重复走访要排序的数列，每次比较两个元素，<br>\n如果顺序错误那么就将他们交换，没有需要<br>\n交换的元素时，就说明数列排序完成了</p>\n",
-            "tags": [
-                "Python"
-            ]
-        },
-        {
             "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%804%EF%BC%88%E8%AF%AD%E6%B3%95%E7%B3%96%EF%BC%89/",
             "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/05/06/python%E5%9F%BA%E7%A1%804%EF%BC%88%E8%AF%AD%E6%B3%95%E7%B3%96%EF%BC%89/",
             "title": "python基础4（语法糖）",
@@ -33,14 +23,6 @@
             "tags": [
                 "Python"
             ]
-        },
-        {
-            "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/26/python%E5%9F%BA%E7%A1%803%EF%BC%88%E5%A4%9A%E4%BB%BB%E5%8A%A1%EF%BC%89/",
-            "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/26/python%E5%9F%BA%E7%A1%803%EF%BC%88%E5%A4%9A%E4%BB%BB%E5%8A%A1%EF%BC%89/",
-            "title": "python基础3（多任务）",
-            "date_published": "2021-04-26T12:40:43.000Z",
-            "content_html": "",
-            "tags": []
         },
         {
             "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2021/04/22/%E6%97%A5%E6%B4%BB%E4%BA%BA%E6%95%B0%E5%92%8C%E9%AB%98%E5%B9%B6%E5%8F%91/",
@@ -233,16 +215,6 @@
             ]
         },
         {
-            "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/04/15/hello-world/",
-            "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/04/15/hello-world/",
-            "title": "Hello World",
-            "date_published": "2018-04-15T13:19:03.000Z",
-            "content_html": "<p>Welcome to <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvLw==\">Hexo</span>! This is your very first post. Check <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv\">documentation</span> for more info. If you get any problems when using Hexo, you can find the answer in <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=\">troubleshooting</span> or you can ask me on <a href=\"https://github.com/hexojs/hexo/issues\">GitHub</a>.</p>\n<h2 id=\"quick-start\"><a class=\"markdownIt-Anchor\" href=\"#quick-start\">#</a> Quick Start</h2>\n<h3 id=\"create-a-new-post\"><a class=\"markdownIt-Anchor\" href=\"#create-a-new-post\">#</a> Create a new post</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo new <span class=\"string\">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s\">Writing</span></p>\n<h3 id=\"run-server\"><a class=\"markdownIt-Anchor\" href=\"#run-server\">#</a> Run server</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo server</span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=\">Server</span></p>\n<h3 id=\"generate-static-files\"><a class=\"markdownIt-Anchor\" href=\"#generate-static-files\">#</a> Generate static files</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo generate</span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s\">Generating</span></p>\n<h3 id=\"deploy-to-remote-sites\"><a class=\"markdownIt-Anchor\" href=\"#deploy-to-remote-sites\">#</a> Deploy to remote sites</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo deploy</span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s\">Deployment</span></p>\n",
-            "tags": [
-                "Python"
-            ]
-        },
-        {
             "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/04/13/gitee%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/",
             "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2018/04/13/gitee%E7%9A%84%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/",
             "title": "gitee的基础命令",
@@ -250,6 +222,16 @@
             "content_html": "<p>git 的基础命令，当你上传仓库时会有一个本地仓库，你需要将你的代码先上传到本地仓库，之后再上传到云端</p>\n<p>这个本地仓库是必须要有的，你可以在云端 https://gitee.com/ 创建一个仓库然后克隆或者根据这个来一步步来</p>\n<p><img data-src=\"C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210413163208235.png\" alt=\"image-20210413163208235\"></p>\n<h3 id=\"git的基础命令\"><a class=\"markdownIt-Anchor\" href=\"#git的基础命令\">#</a> git 的基础命令：</h3>\n<p>​\t\tgit log 查看 git 合入的记录</p>\n<p><img data-src=\"https://img.php.cn/upload/article/000/000/052/883f86986e5d3b8d941f67af3a89d8d0-0.png\" alt=\"img\"></p>\n<p>git add . 将本地代码全部提交</p>\n<p><img data-src=\"https://img.php.cn/upload/article/000/000/052/689edba3a19b0cd11c633afc566937e0-3.png\" alt=\"img\"></p>\n<p>git commit -m “合入新的 PUCCH 和小区功率代码” 为本次提交添加注释</p>\n<p><img data-src=\"https://img.php.cn/upload/article/000/000/052/f807aad4329760d9e8452dc5b305e7b1-4.png\" alt=\"img\"></p>\n<p>git push origin master 将提交的代码推送到主分支</p>\n<p><img data-src=\"https://img.php.cn/upload/article/000/000/052/f807aad4329760d9e8452dc5b305e7b1-4.png\" alt=\"img\"></p>\n<p>输入 git branch -a 命令查看 git 库里的所有分支，可以看到，该命令将所有分支都列出来了</p>\n<p><img data-src=\"https://img.php.cn/upload/article/000/000/052/4c0f371dbff1495452d7c6b3e4d994ec-9.png\" alt=\"img\"></p>\n<p>输入 git checkout -t 分支名称，可以切换到该分支</p>\n<p><img data-src=\"https://img.php.cn/upload/article/000/000/052/4c0f371dbff1495452d7c6b3e4d994ec-10.png\" alt=\"img\"></p>\n<h5 id=\"注意切换分支后一定记得要-git-pull一下确保你的本地分支和云端分支的代码是一致的然后写完代码提交到云端不会覆盖之前云端更新的代码\"><a class=\"markdownIt-Anchor\" href=\"#注意切换分支后一定记得要-git-pull一下确保你的本地分支和云端分支的代码是一致的然后写完代码提交到云端不会覆盖之前云端更新的代码\">#</a> 注意：切换分支后一定记得要 git pull 一下，确保你的本地分支和云端分支的代码是一致的然后写完代码提交到云端不会覆盖之前云端更新的代码</h5>\n<p>输入 git merge 要合并的分支 将分支合并</p>\n<h5 id=\"注意比如你在dev分支写入的代码你需要合并到master主分支里你就需要切换到master分支输入git-merge-dev-就可以合并dev分支了合并之后一定要记得上传三步git-add-git-commit-m-注释-git-push-origin-master\"><a class=\"markdownIt-Anchor\" href=\"#注意比如你在dev分支写入的代码你需要合并到master主分支里你就需要切换到master分支输入git-merge-dev-就可以合并dev分支了合并之后一定要记得上传三步git-add-git-commit-m-注释-git-push-origin-master\">#</a> 注意：比如你在 dev 分支写入的代码，你需要合并到 master 主分支里，你就需要切换到 master 分支，输入 git merge dev 就可以合并 dev 分支了，合并之后一定要记得上传三步，git add .   git commit -m ‘注释’   git push origin master</h5>\n",
             "tags": [
                 "Git"
+            ]
+        },
+        {
+            "id": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2017/04/15/hello-world/",
+            "url": "https://github.com/tinaidejishuboke/tinaidejishuboke.github.io/2017/04/15/hello-world/",
+            "title": "Hello World",
+            "date_published": "2017-04-15T13:19:03.000Z",
+            "content_html": "<p>Welcome to <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvLw==\">Hexo</span>! This is your very first post. Check <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv\">documentation</span> for more info. If you get any problems when using Hexo, you can find the answer in <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=\">troubleshooting</span> or you can ask me on <a href=\"https://github.com/hexojs/hexo/issues\">GitHub</a>.</p>\n<h2 id=\"quick-start\"><a class=\"markdownIt-Anchor\" href=\"#quick-start\">#</a> Quick Start</h2>\n<h3 id=\"create-a-new-post\"><a class=\"markdownIt-Anchor\" href=\"#create-a-new-post\">#</a> Create a new post</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo new <span class=\"string\">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s\">Writing</span></p>\n<h3 id=\"run-server\"><a class=\"markdownIt-Anchor\" href=\"#run-server\">#</a> Run server</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo server</span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=\">Server</span></p>\n<h3 id=\"generate-static-files\"><a class=\"markdownIt-Anchor\" href=\"#generate-static-files\">#</a> Generate static files</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo generate</span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s\">Generating</span></p>\n<h3 id=\"deploy-to-remote-sites\"><a class=\"markdownIt-Anchor\" href=\"#deploy-to-remote-sites\">#</a> Deploy to remote sites</h3>\n<figure class=\"highlight bash\"><table><tr><td class=\"gutter\"><pre><span class=\"line\">1</span><br></pre></td><td class=\"code\"><pre><span class=\"line\">$ hexo deploy</span><br></pre></td></tr></table></figure>\n<p>More info: <span class=\"exturl\" data-url=\"aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s\">Deployment</span></p>\n",
+            "tags": [
+                "Python"
             ]
         }
     ]
